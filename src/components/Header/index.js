@@ -38,7 +38,7 @@ class Header extends Component {
     return (
       <>
         <nav className="navbar">
-          <div className="image-nav-container" testid="restaurant-item">
+          <div className="image-nav-container">
             <Link to="/">
               <img
                 src="https://res.cloudinary.com/image-link-getter/image/upload/v1633350279/Vectorlogo_cxrhby.jpg"

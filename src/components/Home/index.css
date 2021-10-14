@@ -15,6 +15,9 @@
     width: 100%;
   }
 }
+.caro-list {
+  list-style-type: none;
+}
 .home-new {
   display: flex;
   flex-direction: column;

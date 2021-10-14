@@ -14,10 +14,10 @@ export default class SimpleSlider extends Component {
     const {item} = this.props
 
     return (
-      <div className="carousel-item" testid="restaurant-item">
+      <div className="carousel-item">
         <Slider {...settings}>
           {item.map(eachItem => (
-            <div className="new" key={eachItem.id} testid="restaurant-item">
+            <div className="new" key={eachItem.id}>
               <img
                 src={eachItem.imageUrl}
                 alt="offer"

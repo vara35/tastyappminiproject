@@ -120,29 +120,19 @@ class Home extends Component {
 
   carouselSuccess = () => {
     const {carouselData} = this.state
-    return <Carousel item={carouselData} testid="restaurant-item" />
+    return <Carousel item={carouselData} />
   }
 
   carouselInprogress = () => (
-    <div className="home-new">
-      <Loader
-        type="TailSpin"
-        height="30px"
-        width="30px"
-        color="#F7931E"
-        testid="restaurants-offers-loader"
-      />
+    <div className="home-new" testid="restaurants-offers-loader">
+      <Loader type="TailSpin" height="30px" width="30px" color="#F7931E" />
     </div>
   )
 
-  initiateCarousel = () => (
-    <ul>
-      <li>this.getCarousel()</li>
-    </ul>
-  )
+  initiateCarousel = () => this.getCarousel()
 
   carouselFailure = () => (
-    <div className="home-new" testid="restaurant-item">
+    <div className="home-new">
       <img
         src="https://res.cloudinary.com/image-link-getter/image/upload/v1633514187/Layer_1_errxca.jpg"
         alt="not found"
@@ -180,27 +170,17 @@ class Home extends Component {
   restaurantSuccess = () => {
     const {restaurantData} = this.state
     return (
-      <ul className="ul-restaurant-item-container" testid="restaurant-item">
+      <ul className="ul-restaurant-item-container">
         {restaurantData.map(eachOne => (
-          <RestaurantItem
-            item={eachOne}
-            key={eachOne.id}
-            testid="restaurant-item"
-          />
+          <RestaurantItem item={eachOne} key={eachOne.id} />
         ))}
       </ul>
     )
   }
 
   restaurantInprogress = () => (
-    <div className="home-new">
-      <Loader
-        type="TailSpin"
-        height="30px"
-        width="30px"
-        color="#F7931E"
-        testid="restaurants-list-loader"
-      />
+    <div className="home-new" testid="restaurants-list-loader">
+      <Loader type="TailSpin" height="30px" width="30px" color="#F7931E" />
     </div>
   )
 
@@ -209,7 +189,7 @@ class Home extends Component {
   }
 
   restaurantFailure = () => (
-    <div className="home-new" testid="restaurant-item">
+    <div className="home-new">
       <img
         src="https://res.cloudinary.com/image-link-getter/image/upload/v1633514187/Layer_1_errxca.jpg"
         alt="not found"
@@ -271,26 +251,24 @@ class Home extends Component {
       return <Redirect to="/login" />
     }
     return (
-      <div className="home-container" testid="restaurant-item">
-        <div className="home-items-container" testid="restaurant-item">
+      <div className="home-container">
+        <div className="home-items-container">
           <Header testid="restaurant-item" />
           {this.getCarouselComponent()}
           <PopularRestaurant
             sortByOptions={sortByOptions}
             updateSortItems={this.updateSortItems}
             sortedValue={sortedValue}
-            testid="restaurant-item"
           />
           <hr />
           {this.getRestaurantComponent()}
           <Counter
-            testid="restaurant-item"
             decreaseItems={this.decreaseItems}
             increaseItems={this.increaseItems}
             offSetValue={offSetValue}
           />
         </div>
-        <Footer testid="restaurant-item" />
+        <Footer />
       </div>
     )
   }

@@ -17,7 +17,7 @@ class Counter extends Component {
   render() {
     const {offSetValue} = this.props
     return (
-      <div className="greater-container" testid="restaurant-item">
+      <div className="greater-container">
         <button
           type="button"
           onClick={this.onDecrement}

@@ -9,8 +9,8 @@ import './index.css'
 
 export default function Footer() {
   return (
-    <div className="footer-container" testid="restaurant-item">
-      <div className="footer-logo-container" testid="restaurant-item">
+    <div className="footer-container">
+      <div className="footer-logo-container">
         <img
           src="https://res.cloudinary.com/image-link-getter/image/upload/v1633602388/Vectorfooter-icon-cap-2_ouadid.jpg"
           alt="website-footer-logo"
@@ -21,7 +21,7 @@ export default function Footer() {
       <p className="footer-text">
         The only thing we are serious about is food.
       </p>
-      <div className="footer-icons-container" testid="restaurant-item">
+      <div className="footer-icons-container">
         <FaPinterestSquare
           className="footer-icon"
           testid="pintrest-social-icon"

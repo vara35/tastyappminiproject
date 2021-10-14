@@ -13,11 +13,11 @@ const CartItem = props => {
   return (
     <>
       <li className="cart-list">
-        <div className="cart-merge" testid="restaurant-item">
+        <div className="cart-merge">
           <img src={itemCart.imageUrl} alt="ok" className="cart-image" />
           <h1 className="cart-name">{itemCart.name}</h1>
         </div>
-        <div className="cart-star-container" testid="restaurant-item">
+        <div className="cart-star-container">
           <div testid="decrement-count">
             <button
               type="button"
@@ -39,12 +39,12 @@ const CartItem = props => {
             </button>
           </div>
         </div>
-        <div className="mobile-cart-merge" testid="restaurant-item">
+        <div className="mobile-cart-merge">
           <BiRupee className="color" />
           <p className="color">{itemCart.cost}</p>
         </div>
-        <div className="mobile-cart-view" testid="restaurant-item">
-          <div className="star-container" testid="restaurant-item">
+        <div className="mobile-cart-view">
+          <div className="star-container">
             <div testid="decrement-count">
               <button type="button" className="removeItems">
                 -
@@ -61,7 +61,7 @@ const CartItem = props => {
               </button>
             </div>
           </div>
-          <div className="cart-merge" testid="restaurant-item">
+          <div className="cart-merge">
             <BiRupee className="color" />
             <p className="color">{itemCart.cost}</p>
           </div>

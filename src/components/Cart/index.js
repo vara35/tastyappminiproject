@@ -70,9 +70,9 @@ class Cart extends Component {
 
     return convert.length > 0 ? (
       <>
-        <div className="cart-section-container" testid="restaurant-item">
-          <div className="first-section-container" testid="restaurant-item">
-            <div className="name-con" testid="restaurant-item">
+        <div className="cart-section-container">
+          <div className="first-section-container">
+            <div className="name-con">
               <h1 className="item-name">Item</h1>
               <h1 className="item-name">Quantity</h1>
               <h1 className="item-name">Price</h1>
@@ -80,7 +80,6 @@ class Cart extends Component {
             <ul className="cart-ul-container">
               {convert.map(eachOne => (
                 <CartItem
-                  testid="restaurant-item"
                   itemCart={eachOne}
                   updateCost={this.updateCost}
                   itemsCount={itemsCount}
@@ -90,9 +89,9 @@ class Cart extends Component {
                 />
               ))}
             </ul>
-            <div className="order-container" testid="restaurant-item">
+            <div className="order-container">
               <p testid="total-price">Order Total : </p>
-              <div testid="restaurant-item">
+              <div>
                 <p>0</p>
                 <button
                   type="button"
@@ -105,16 +104,16 @@ class Cart extends Component {
             </div>
           </div>
         </div>
-        <Footer testid="restaurant-item" />
+        <Footer />
       </>
     ) : (
-      <div className="cart-bottom-container" testid="restaurant-item">
+      <div className="cart-bottom-container">
         <img
           src="https://res.cloudinary.com/image-link-getter/image/upload/v1633884154/OBJECTSbowl_xqhwmy.jpg"
           alt="empty cart"
           className="cart-bowl"
         />
-        <p className="cart-noProduct">No Orders Yet!</p>
+        <h1 className="cart-noProduct">No Orders Yet!</h1>
         <p className="cart-your">
           Your cart is empty. Add something from the menu.
         </p>
@@ -128,14 +127,14 @@ class Cart extends Component {
   }
 
   cartInprogress = () => (
-    <div className="home-new" testid="restaurants-list-loader">
+    <div className="home-new">
       <Loader type="TailSpin" height="30px" width="30px" color="#F7931E" />
     </div>
   )
 
   restaurantPayed = () => (
-    <div className="payed-container" testid="restaurant-item">
-      <div className="payed-bottom-container" testid="restaurant-item">
+    <div className="payed-container">
+      <div className="payed-bottom-container">
         <img
           src="https://res.cloudinary.com/image-link-getter/image/upload/v1634020176/Vectorsucces_mkuizy.jpg"
           alt="success"
@@ -155,15 +154,15 @@ class Cart extends Component {
   )
 
   cartFailure = () => (
-    <div className="home-new" testid="restaurant-item">
+    <div className="home-new">
       <img
         src="https://res.cloudinary.com/image-link-getter/image/upload/v1633514187/Layer_1_errxca.jpg"
         alt="not found"
         className="not-found-image"
       />
-      <h1 className="not-found-name"> Page Not Found</h1>
+      <h1 className="not-found-name">Page Not Found</h1>
       <p className="not-found-description">
-        we are sorry, the page you requested could not be found Please go back
+        we are sorry, the page you requested could not be found Please go back
         to the homepage
       </p>
       <button type="button" className="retry-button">
@@ -190,8 +189,8 @@ class Cart extends Component {
 
   render() {
     return (
-      <div className="cart-container" testid="restaurant-item">
-        <Header testid="restaurant-item" />
+      <div className="cart-container">
+        <Header />
         {this.getCartComponent()}
       </div>
     )

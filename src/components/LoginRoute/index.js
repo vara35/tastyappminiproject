@@ -63,17 +63,17 @@ class LoginRoute extends Component {
     }
     const {errorText, errorMessage, loginLoader} = this.state
     return (
-      <div className="login-container" testid="restaurant-item">
-        <div className="login-details-container" testid="restaurant-item">
-          <div className="user-details-container" testid="restaurant-item">
-            <div className="mobile-image-container" testid="restaurant-item">
+      <div className="login-container">
+        <div className="login-details-container">
+          <div className="user-details-container">
+            <div className="mobile-image-container">
               <img
                 src="https://res.cloudinary.com/image-link-getter/image/upload/v1633413170/Rectangle_1457mobileDishImage_2_cnapv3.jpg"
                 alt="website login"
                 className="mobile-logo"
               />
             </div>
-            <div className="tasty-logo-container" testid="restaurant-item">
+            <div className="tasty-logo-container">
               <img
                 src="https://res.cloudinary.com/image-link-getter/image/upload/v1633350279/Vectorlogo_cxrhby.jpg"
                 alt="website logo"
@@ -83,7 +83,7 @@ class LoginRoute extends Component {
             </div>
             <h1 className="login">Login</h1>
             {loginLoader && (
-              <div className="home-login" testid="restaurants-list-loader">
+              <div className="home-login">
                 <Loader
                   type="TailSpin"
                   height="30px"
@@ -92,12 +92,8 @@ class LoginRoute extends Component {
                 />
               </div>
             )}
-            <form
-              testid="restaurant-item"
-              className="form-container"
-              onSubmit={this.getLoginUser}
-            >
-              <div className="add-login" testid="restaurant-item">
+            <form className="form-container" onSubmit={this.getLoginUser}>
+              <div className="add-login">
                 <label htmlFor="username" className="username">
                   USERNAME
                 </label>
@@ -109,7 +105,7 @@ class LoginRoute extends Component {
                   onChange={this.updateUsername}
                 />
               </div>
-              <div testid="restaurant-item" className="add-login">
+              <div className="add-login">
                 <label htmlFor="password" className="username">
                   PASSWORD
                 </label>
@@ -128,7 +124,7 @@ class LoginRoute extends Component {
             </form>
           </div>
         </div>
-        <div className="login-image-container" testid="restaurant-item">
+        <div className="login-image-container">
           <img
             src="https://res.cloudinary.com/image-link-getter/image/upload/v1633358584/Rectangle_1456_ndmsuf.jpg"
             alt="website login"

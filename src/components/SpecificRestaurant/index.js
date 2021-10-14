@@ -93,10 +93,9 @@ class SpecificRestaurant extends Component {
   restaurantSuccess = () => {
     const {specificRestaurant, cartId} = this.state
     return (
-      <ul className="ul-restaurant-item-container" testid="restaurant-item">
+      <ul className="ul-restaurant-item-container">
         {specificRestaurant.map(eachOne => (
           <ParticularItem
-            testid="restaurant-item"
             item={eachOne}
             key={eachOne.id}
             updateCart={this.updateCart}
@@ -118,7 +117,7 @@ class SpecificRestaurant extends Component {
   }
 
   restaurantFailure = () => (
-    <div className="home-new" testid="restaurant-item">
+    <div className="home-new">
       <img
         src="https://res.cloudinary.com/image-link-getter/image/upload/v1633514187/Layer_1_errxca.jpg"
         alt="not found"
@@ -126,7 +125,7 @@ class SpecificRestaurant extends Component {
       />
       <h1 className="not-found-name"> Page Not Found</h1>
       <p className="not-found-description">
-        we are sorry, the page you requested could not be found Please go back
+        we are sorry, the page you requested could not be found Please go back
         to the homepage
       </p>
       <button
@@ -157,16 +156,13 @@ class SpecificRestaurant extends Component {
     const {specificItemsDetails, cartId} = this.state
 
     return (
-      <div className="home-container" testid="restaurant-item">
-        <div className="home-items-container" testid="restaurant-item">
-          <Header testid="restaurant-item" />
-          <RestaurantDetails
-            specificItemsDetails={specificItemsDetails}
-            testid="restaurant-item"
-          />
+      <div className="home-container">
+        <div className="home-items-container">
+          <Header />
+          <RestaurantDetails specificItemsDetails={specificItemsDetails} />
           {this.getRestaurantComponent()}
         </div>
-        <Footer testid="restaurant-item" />
+        <Footer />
       </div>
     )
   }

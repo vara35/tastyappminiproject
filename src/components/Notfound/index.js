@@ -4,7 +4,7 @@ import Header from '../Header'
 const Notfound = () => (
   <>
     <Header />
-    <div className="home-new" testid="restaurant-item">
+    <div className="home-new">
       <img
         src="https://res.cloudinary.com/image-link-getter/image/upload/v1633514187/Layer_1_errxca.jpg"
         alt="not found"
