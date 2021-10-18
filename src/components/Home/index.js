@@ -120,7 +120,11 @@ class Home extends Component {
 
   carouselSuccess = () => {
     const {carouselData} = this.state
-    return <Carousel item={carouselData} />
+    return (
+      <ul className="caro-list">
+        <Carousel item={carouselData} />
+      </ul>
+    )
   }
 
   carouselInprogress = () => (
@@ -138,9 +142,9 @@ class Home extends Component {
         alt="not found"
         className="not-found-image"
       />
-      <h1 className="not-found-name"> Page Not Found</h1>
+      <h1 className="not-found-name">Page Not Found</h1>
       <p className="not-found-description">
-        we are sorry, the page you requested could not be found Please go back
+        we are sorry, the page you requested could not be found Please go back
         to the homepage
       </p>
       <button
@@ -195,9 +199,9 @@ class Home extends Component {
         alt="not found"
         className="not-found-image"
       />
-      <h1 className="not-found-name"> Page Not Found</h1>
+      <h1 className="not-found-name">Page Not Found</h1>
       <p className="not-found-description">
-        we are sorry, the page you requested could not be found Please go back
+        we are sorry, the page you requested could not be found Please go back
         to the homepage
       </p>
       <button
@@ -253,7 +257,7 @@ class Home extends Component {
     return (
       <div className="home-container">
         <div className="home-items-container">
-          <Header testid="restaurant-item" />
+          <Header />
           {this.getCarouselComponent()}
           <PopularRestaurant
             sortByOptions={sortByOptions}

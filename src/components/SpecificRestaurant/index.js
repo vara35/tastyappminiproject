@@ -93,7 +93,7 @@ class SpecificRestaurant extends Component {
   restaurantSuccess = () => {
     const {specificRestaurant, cartId} = this.state
     return (
-      <ul className="ul-restaurant-item-container">
+      <ul className="ul-restaurant-item-container" testid="foodItem">
         {specificRestaurant.map(eachOne => (
           <ParticularItem
             item={eachOne}

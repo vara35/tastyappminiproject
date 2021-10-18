@@ -17,13 +17,13 @@ export default class SimpleSlider extends Component {
       <div className="carousel-item">
         <Slider {...settings}>
           {item.map(eachItem => (
-            <div className="new" key={eachItem.id}>
+            <li className="new" key={eachItem.id}>
               <img
                 src={eachItem.imageUrl}
                 alt="offer"
                 className="carouselImage"
               />
-            </div>
+            </li>
           ))}
         </Slider>
       </div>

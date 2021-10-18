@@ -6,8 +6,8 @@ import './index.css'
 const RestaurantDetails = props => {
   const {specificItemsDetails} = props
   return (
-    <div className="item-details-containers" testid="restaurant-item">
-      <div className="specific-card" testid="restaurant-item">
+    <div className="item-details-containers">
+      <div className="specific-card">
         <img
           src={specificItemsDetails.imageUrl}
           alt="restaurant"
@@ -38,7 +38,7 @@ const RestaurantDetails = props => {
                   {specificItemsDetails.costForTwo}
                 </p>
               </div>
-              <p className="specific-reviewCount">CostForTwo</p>
+              <p className="specific-reviewCount">Cost for two</p>
             </div>
           </div>
         </div>

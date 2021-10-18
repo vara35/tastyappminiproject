@@ -22,16 +22,18 @@ class Counter extends Component {
           type="button"
           onClick={this.onDecrement}
           className="greater-icon"
+          testid="pagination-left-button"
         >
-          <FaLessThan className="icon" testid="pagination-left-button" />
+          <FaLessThan className="icon" />
         </button>
         <div testid="active-page-number">{offSetValue} of 30 </div>
         <button
           type="button"
           onClick={this.onIncrement}
           className="greater-icon"
+          testid="pagination-right-button"
         >
-          <FaGreaterThan className="icon" testid="pagination-right-button" />
+          <FaGreaterThan className="icon" />
         </button>
       </div>
     )

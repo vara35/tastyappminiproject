@@ -20,7 +20,7 @@ const PopularRestaurant = props => {
       <div className="icon-bar-container" testid="restaurant-item">
         <BsFilterLeft />
         <div className="dropDown-container" testid="restaurant-item">
-          <p className="sort">Sort by</p>
+          <p className="sort">Sort By</p>
           <select
             className="drop-down"
             onChange={SortItemsFuntion}

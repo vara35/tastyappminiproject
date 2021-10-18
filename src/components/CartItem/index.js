@@ -18,7 +18,7 @@ const CartItem = props => {
           <h1 className="cart-name">{itemCart.name}</h1>
         </div>
         <div className="cart-star-container">
-          <div testid="decrement-count">
+          <div>
             <button
               type="button"
               className="removeItems"
@@ -27,8 +27,8 @@ const CartItem = props => {
               -
             </button>
           </div>
-          <div testid="foodItem">0</div>
-          <div testid="increment-count">
+          <div testid="item-quantity">0</div>
+          <div>
             <button
               type="button"
               className="removeItems"
@@ -45,17 +45,22 @@ const CartItem = props => {
         </div>
         <div className="mobile-cart-view">
           <div className="star-container">
-            <div testid="decrement-count">
-              <button type="button" className="removeItems">
+            <div>
+              <button
+                type="button"
+                className="removeItems"
+                testid="decrement-quantity"
+              >
                 -
               </button>
             </div>
-            <div testid="foodItem">{count}</div>
-            <div testid="increment-count">
+            <div testid="item-quantity">{count}</div>
+            <div>
               <button
                 type="button"
                 className="removeItems"
                 onClick={updateItemsCount}
+                testid="increment-quantity"
               >
                 +
               </button>

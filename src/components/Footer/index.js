@@ -19,7 +19,7 @@ export default function Footer() {
         <h1 className="footer-name">Tasty Kitchens</h1>
       </div>
       <p className="footer-text">
-        The only thing we are serious about is food.
+        The only thing we are serious about is food. Contact us on
       </p>
       <div className="footer-icons-container">
         <FaPinterestSquare

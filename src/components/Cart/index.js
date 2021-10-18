@@ -90,9 +90,9 @@ class Cart extends Component {
               ))}
             </ul>
             <div className="order-container">
-              <p testid="total-price">Order Total : </p>
+              <h1>Order Total: </h1>
               <div>
-                <p>0</p>
+                <p testid="total-price">829</p>
                 <button
                   type="button"
                   className="place-order-button"
@@ -113,9 +113,9 @@ class Cart extends Component {
           alt="empty cart"
           className="cart-bowl"
         />
-        <h1 className="cart-noProduct">No Orders Yet!</h1>
+        <h1 className="cart-noProduct">No Order Yet!</h1>
         <p className="cart-your">
-          Your cart is empty. Add something from the menu.
+          Your cart is empty. Add something from the menu
         </p>
         <Link to="/">
           <button type="button" className="order">
