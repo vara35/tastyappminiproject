@@ -9,17 +9,17 @@ const PopularRestaurant = props => {
     updateSortItems(event.target.value)
   }
   return (
-    <div className="popular-bar-container" testid="restaurant-item">
-      <div className="popular-container" testid="restaurant-item">
+    <div className="popular-bar-container">
+      <div className="popular-container">
         <h1 className="popular-text">Popular Restaurants</h1>
         <p className="popular-name">
           Select Your favourite restaurant special dish and make your day
           happy...
         </p>
       </div>
-      <div className="icon-bar-container" testid="restaurant-item">
+      <div className="icon-bar-container">
         <BsFilterLeft />
-        <div className="dropDown-container" testid="restaurant-item">
+        <div className="dropDown-container">
           <p className="sort">Sort By</p>
           <select
             className="drop-down"

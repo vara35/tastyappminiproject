@@ -24,6 +24,7 @@ class SpecificRestaurant extends Component {
     specificRestaurant: [],
     specificItemsDetails: [],
     cartId: '',
+    isTrue: false,
   }
 
   componentDidMount() {
@@ -84,22 +85,42 @@ class SpecificRestaurant extends Component {
     const filterItems = specificRestaurant.filter(
       eachItem => eachItem.id === id,
     )
-    newArray.push(filterItems[0])
-    localStorage.setItem('cartData', JSON.stringify(newArray))
 
-    this.setState({cartId: id})
+    const getSaveItemsOne = localStorage.getItem('cartData')
+    const convertSaveItemsOne = JSON.parse(getSaveItemsOne)
+
+    const check = convertSaveItemsOne.some(
+      eachFoodItem => eachFoodItem.id === id,
+    )
+    console.log(check)
+
+    if (check === false) {
+      const updateCartItems = filterItems.map(eachOne => ({
+        cost: eachOne.cost,
+        quantity: 1,
+        id: eachOne.id,
+        imageUrl: eachOne.imageUrl,
+        name: eachOne.name,
+      }))
+      newArray.push(updateCartItems[0])
+
+      localStorage.setItem('cartData', JSON.stringify(newArray))
+    }
+
+    this.setState({cartId: id, isTrue: true})
   }
 
   restaurantSuccess = () => {
-    const {specificRestaurant, cartId} = this.state
+    const {specificRestaurant, cartId, isTrue} = this.state
     return (
-      <ul className="ul-restaurant-item-container" testid="foodItem">
+      <ul className="ul-restaurant-item-container">
         {specificRestaurant.map(eachOne => (
           <ParticularItem
             item={eachOne}
             key={eachOne.id}
             updateCart={this.updateCart}
-            isActive={cartId === eachOne.id}
+            isActive={isTrue}
+            cartID={cartId}
           />
         ))}
       </ul>
@@ -153,7 +174,7 @@ class SpecificRestaurant extends Component {
   }
 
   render() {
-    const {specificItemsDetails, cartId} = this.state
+    const {specificItemsDetails} = this.state
 
     return (
       <div className="home-container">

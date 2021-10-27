@@ -7,7 +7,7 @@ const RestaurantItem = props => {
   const {item} = props
   return (
     <Link to={`/restaurant/${item.id}`} className="add-new">
-      <li className="list-item-restaurant">
+      <li className="list-item-restaurant" testid="restaurant-item">
         <img
           src={item.imageUrl}
           alt="restaurant"

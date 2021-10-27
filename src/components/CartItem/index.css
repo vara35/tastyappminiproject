@@ -14,6 +14,9 @@
     margin-top: 20px;
   }
 }
+.count-of-items-in-cart {
+  color: black;
+}
 .cart-image {
   width: 150px;
   height: 100px;
@@ -21,6 +24,11 @@
   margin-right: 10px;
 }
 .cart-name {
+  font-size: 14px;
+  font-family: DM Sans;
+  font-style: Medium;
+}
+.cart-name-one {
   font-size: 14px;
   font-family: DM Sans;
   font-style: Medium;
@@ -37,6 +45,9 @@
   .mobile-cart-view {
     display: none;
   }
+  .cart-name-one {
+    display: none;
+  }
 }
 .cart-star-container {
   display: flex;
@@ -49,7 +60,11 @@
   .mobile-cart-merge {
     display: none;
   }
+  .cart-name {
+    display: none;
+  }
 }
+
 .cart-merge {
   display: flex;
   align-items: center;

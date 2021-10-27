@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom'
 import Header from '../Header'
 
-const Notfound = () => (
+const NotFound = () => (
   <>
     <Header />
     <div className="home-new">
@@ -10,7 +10,7 @@ const Notfound = () => (
         alt="not found"
         className="not-found-image"
       />
-      <h1 className="not-found-name"> Page Not Found</h1>
+      <h1 className="not-found-name">Page Not Found</h1>
       <p className="not-found-description">
         we are sorry, the page you requested could not be found
       </p>
@@ -23,4 +23,4 @@ const Notfound = () => (
   </>
 )
 
-export default Notfound
+export default NotFound

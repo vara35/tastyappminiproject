@@ -4,18 +4,28 @@ import {FaLessThan, FaGreaterThan} from 'react-icons/fa'
 import './index.css'
 
 class Counter extends Component {
+  state = {activeCount: 1}
+
   onDecrement = () => {
+    const {activeCount} = this.state
     const {decreaseItems} = this.props
-    decreaseItems()
+    if (activeCount > 1) {
+      this.setState(prevState => ({activeCount: prevState.activeCount - 1}))
+      decreaseItems()
+    }
   }
 
   onIncrement = () => {
     const {increaseItems} = this.props
-    increaseItems()
+    const {activeCount} = this.state
+    if (activeCount < 4) {
+      this.setState(prevState => ({activeCount: prevState.activeCount + 1}))
+      increaseItems()
+    }
   }
 
   render() {
-    const {offSetValue} = this.props
+    const {activeCount} = this.state
     return (
       <div className="greater-container">
         <button
@@ -26,7 +36,11 @@ class Counter extends Component {
         >
           <FaLessThan className="icon" />
         </button>
-        <div testid="active-page-number">{offSetValue} of 30 </div>
+        <div testid="active-page-number">
+          <p>
+            <span>{activeCount}</span> of 4
+          </p>
+        </div>
         <button
           type="button"
           onClick={this.onIncrement}

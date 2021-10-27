@@ -1,12 +1,15 @@
 import {Component} from 'react'
 import {Link} from 'react-router-dom'
 import Loader from 'react-loader-spinner'
+import {BiRupee} from 'react-icons/bi'
 
 import Header from '../Header'
 import Footer from '../Footer'
 import CartItem from '../CartItem'
 
 import './index.css'
+
+// let count = 0
 
 const specificRestaurantComponent = {
   initial: 'INITIAL',
@@ -21,10 +24,25 @@ class Cart extends Component {
     cartApiStatus: specificRestaurantComponent.initial,
     itemsCount: 1,
     cartIdentify: '',
+    count: 0,
   }
 
   componentDidMount() {
     this.getCart()
+    this.getCost()
+  }
+
+  getCost = () => {
+    const getValues = localStorage.getItem('cartData')
+    const convert = JSON.parse(getValues)
+
+    if (convert.length > 0) {
+      const getTotalPrice = convert.map(
+        eachItemCost => eachItemCost.quantity * eachItemCost.cost,
+      )
+      const addGetTotalPrice = getTotalPrice.reduce((One, add) => One + add)
+      this.setState({count: addGetTotalPrice})
+    }
   }
 
   getCart = () => {
@@ -37,29 +55,12 @@ class Cart extends Component {
   }
 
   updateState = () => {
-    const setArray = [
-      {
-        cost: '',
-        foodType: '',
-        id: '',
-        imageUrl: '',
-        name: '',
-        rating: '',
-      },
-      {
-        cost: '',
-        foodType: '',
-        id: '',
-        imageUrl: '',
-        name: '',
-        rating: '',
-      },
-    ]
     localStorage.setItem('cartData', JSON.stringify([]))
     this.setState({cartApiStatus: specificRestaurantComponent.payed})
   }
 
   updateItems = id => {
+    console.log(id)
     this.setState(prev => ({itemsCount: prev.itemsCount + 1, cartIdentify: id}))
   }
 
@@ -67,6 +68,16 @@ class Cart extends Component {
     const {itemsCount, cartIdentify} = this.state
     const getValues = localStorage.getItem('cartData')
     const convert = JSON.parse(getValues)
+    const {count} = this.state
+
+    if (convert.length > 0) {
+      const getTotalPrice = convert.map(
+        eachItemCost => eachItemCost.quantity * eachItemCost.cost,
+      )
+      const addGetTotalPrice = getTotalPrice.reduce((One, add) => One + add)
+      //   count = addGetTotalPrice
+      //   this.setState({count: addGetTotalPrice})
+    }
 
     return convert.length > 0 ? (
       <>
@@ -85,14 +96,19 @@ class Cart extends Component {
                   itemsCount={itemsCount}
                   updateItems={this.updateItems}
                   key={eachOne.id}
-                  isTrue={cartIdentify === eachOne.id}
+                  isTrue={cartIdentify}
                 />
               ))}
             </ul>
+            <hr className="horizontal-line" />
             <div className="order-container">
-              <h1>Order Total: </h1>
+              <h1 className="order-name">Order Total: </h1>
               <div>
-                <p testid="total-price">829</p>
+                <div className="total-price-merge">
+                  <BiRupee />
+                  <p testid="total-price">{count}</p>
+                </div>
+
                 <button
                   type="button"
                   className="place-order-button"
