@@ -9,7 +9,6 @@ class ParticularItem extends Component {
 
   addItems = () => {
     const {item, updateCart} = this.props
-
     updateCart(item.id)
   }
 
@@ -18,10 +17,12 @@ class ParticularItem extends Component {
 
     const getSaveItemsOne = localStorage.getItem('cartData')
     const convertSaveItemsOne = JSON.parse(getSaveItemsOne)
-    const getQuanityFromSaveItemsOne = convertSaveItemsOne.filter(
+    const getQuantityFromSaveItemsOne = convertSaveItemsOne.filter(
       eachOne => eachOne.id === cartID,
     )
-    this.setState({newArrayOne: getQuanityFromSaveItemsOne[0].quantity})
+    if (getQuantityFromSaveItemsOne.length > 0) {
+      this.setState({newArrayOne: getQuantityFromSaveItemsOne[0].quantity})
+    }
   }
 
   updateCartSaveItems = () => {
@@ -44,18 +45,30 @@ class ParticularItem extends Component {
   }
 
   removeCartSaveItems = () => {
-    const {item} = this.props
+    const {item, updateCartTwo} = this.props
 
     const getSaveItems = localStorage.getItem('cartData')
     const convertSaveItems = JSON.parse(getSaveItems)
 
     const getSaveItemsFromMap = convertSaveItems.map(eachFood => {
       if (eachFood.id === item.id) {
+        if (eachFood.quantity === 1) {
+          updateCartTwo()
+          return []
+        }
         return {...eachFood, quantity: eachFood.quantity - 1}
       }
       return eachFood
     })
-    localStorage.setItem('cartData', JSON.stringify(getSaveItemsFromMap))
+
+    const getValueFromFilters = getSaveItemsFromMap.filter(
+      eachFilter => eachFilter.length !== 0,
+    )
+    if (getValueFromFilters.length > 0) {
+      localStorage.setItem('cartData', JSON.stringify(getValueFromFilters))
+    } else {
+      localStorage.setItem('cartData', JSON.stringify([]))
+    }
     this.showQuantity()
   }
 
@@ -66,11 +79,7 @@ class ParticularItem extends Component {
     return (
       <li className="add-new">
         <div className="list-item-restaurant" testid="foodItem">
-          <img
-            src={item.imageUrl}
-            alt="restaurant"
-            className="restaurant-image"
-          />
+          <img src={item.imageUrl} alt="Food" className="restaurant-image" />
           <div className="restaurant-name-container">
             <h1 className="restaurant-name">{item.name}</h1>
             <div className="star-container">

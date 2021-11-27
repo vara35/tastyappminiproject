@@ -77,3 +77,9 @@
   line-height: 115%;
   margin-left: 10px;
 }
+.search-bar {
+  width: 36%;
+  height: 28px;
+  outline: none;
+  margin-right: 20px;
+}

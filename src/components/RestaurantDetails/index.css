@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-image: url('https://res.cloudinary.com/image-link-getter/image/upload/v1633749588/Rectangle_1399background_rm7ifl.jpg');
+  background-image: url('https://res.cloudinary.com/image-link-getter/image/upload/v1636282445/Screenshot_2021-11-07_162337_New_ld5e36.png');
   background-size: cover;
   height: 220px;
   padding-left: 0px;
@@ -16,6 +16,7 @@
   flex-grow: 1;
   border-radius: 10px;
   margin-right: 20px;
+  cursor: pointer;
 }
 .specific-card {
   display: flex;
@@ -23,7 +24,7 @@
   width: 65%;
 }
 .specific-name {
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-style: Medium;
   font-size: 25px;
   color: #ffffff;
@@ -31,7 +32,7 @@
   letter-spacing: 0.2px;
 }
 .specific-cuisine {
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-style: Regular;
   font-size: 12px;
   line-height: 0;
@@ -39,7 +40,7 @@
   color: #ffffff;
 }
 .specific-location {
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-style: Regular;
   font-size: 12px;
   font-weight: 350;

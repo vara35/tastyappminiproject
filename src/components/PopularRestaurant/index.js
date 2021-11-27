@@ -3,11 +3,21 @@ import {BsFilterLeft} from 'react-icons/bs'
 import './index.css'
 
 const PopularRestaurant = props => {
-  const {updateSortItems, sortByOptions, sortedValue} = props
+  const {
+    updateSortItems,
+    sortByOptions,
+    sortedValue,
+    updateSearchResult,
+  } = props
 
   const SortItemsFuntion = event => {
     updateSortItems(event.target.value)
   }
+
+  const showSearch = event => {
+    updateSearchResult(event.target.value)
+  }
+
   return (
     <div className="popular-bar-container">
       <div className="popular-container">
@@ -17,6 +27,12 @@ const PopularRestaurant = props => {
           happy...
         </p>
       </div>
+      <input
+        type="search"
+        className="search-bar"
+        placeholder="Search "
+        onChange={showSearch}
+      />
       <div className="icon-bar-container">
         <BsFilterLeft />
         <div className="dropDown-container">

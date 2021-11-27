@@ -10,8 +10,8 @@ class Header extends Component {
   state = {burgerState: false}
 
   removeToken = () => {
-    Cookies.remove('jwt_token')
     const {history} = this.props
+    Cookies.remove('jwt_token')
     history.replace('/login')
   }
 
@@ -22,6 +22,12 @@ class Header extends Component {
 
   getHam = () => {
     this.setState({burgerState: false})
+  }
+
+  showSearch = event => {
+    if (event.key === 'Enter') {
+      console.log(event.target.value)
+    }
   }
 
   render() {
@@ -50,6 +56,7 @@ class Header extends Component {
             <h1 className="home-tasty-name">Tasty Kitchens</h1>
           </div>
           <GiHamburgerMenu className="hamBurger" onClick={this.getHamburger} />
+
           <ul className="header-ul-container">
             <Link to="/" className="header-list" onClick={this.updateColor}>
               <li>
@@ -90,13 +97,13 @@ class Header extends Component {
                 <h1 className={`header-home ${cartColor}`}>Cart</h1>
               </li>
             </Link>
-            <button
+            {/* <button
               type="button"
               className="header-button"
               onClick={this.removeToken}
             >
               Logout
-            </button>
+            </button> */}
           </div>
           <AiFillCloseCircle className="closer" onClick={this.getHam} />
         </ul>

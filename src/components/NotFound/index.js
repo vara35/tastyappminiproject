@@ -1,5 +1,6 @@
 import {Link} from 'react-router-dom'
 import Header from '../Header'
+import './index.css'
 
 const NotFound = () => (
   <>
@@ -15,7 +16,7 @@ const NotFound = () => (
         we are sorry, the page you requested could not be found
       </p>
       <Link to="/">
-        <button type="button" className="retry-button">
+        <button type="button" className="retry-button-one">
           Home Page
         </button>
       </Link>

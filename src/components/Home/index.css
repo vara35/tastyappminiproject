@@ -78,3 +78,8 @@
     padding-right: 25px;
   }
 }
+.no-items {
+  text-align: center;
+  font-size: 26px;
+  color: #475569;
+}

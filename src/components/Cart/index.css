@@ -22,6 +22,7 @@
   padding: 5px;
   font-style: Medium;
   font-size: 12px;
+  cursor: pointer;
 }
 .cart-bottom-container {
   height: 80vh;
@@ -29,6 +30,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 @media screen and (max-width: 767px) {
   .cart-bottom-container {
@@ -38,6 +40,7 @@
     justify-content: center;
     align-items: center;
     padding: 30px;
+    text-align: center;
   }
   .cart-noProduct {
     font-size: 20px;
@@ -109,6 +112,7 @@
   border-radius: 5px;
   border: 0;
   padding: 5px;
+  cursor: pointer;
 }
 .payed-container {
   display: flex;
@@ -124,6 +128,7 @@
   align-items: center;
   justify-content: center;
   height: 30vh;
+  text-align: center;
 }
 .payment-name {
   font-family: DM Sans;

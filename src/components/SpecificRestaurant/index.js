@@ -52,7 +52,7 @@ class SpecificRestaurant extends Component {
       const updatedRestaurantInfo = {
         costForTwo: restaurantInfo.cost_for_two,
         cuisine: restaurantInfo.cuisine,
-        imageUrl: restaurantInfo.image_url,
+        image_url: restaurantInfo.image_url,
         id: restaurantInfo.id,
         itemsCount: restaurantInfo.items_count,
         location: restaurantInfo.location,
@@ -92,7 +92,6 @@ class SpecificRestaurant extends Component {
     const check = convertSaveItemsOne.some(
       eachFoodItem => eachFoodItem.id === id,
     )
-    console.log(check)
 
     if (check === false) {
       const updateCartItems = filterItems.map(eachOne => ({
@@ -103,15 +102,19 @@ class SpecificRestaurant extends Component {
         name: eachOne.name,
       }))
       newArray.push(updateCartItems[0])
-
       localStorage.setItem('cartData', JSON.stringify(newArray))
     }
 
     this.setState({cartId: id, isTrue: true})
   }
 
+  updateCartTwo = () => {
+    this.setState({isTrue: false})
+  }
+
   restaurantSuccess = () => {
     const {specificRestaurant, cartId, isTrue} = this.state
+
     return (
       <ul className="ul-restaurant-item-container">
         {specificRestaurant.map(eachOne => (
@@ -121,6 +124,7 @@ class SpecificRestaurant extends Component {
             updateCart={this.updateCart}
             isActive={isTrue}
             cartID={cartId}
+            updateCartTwo={this.updateCartTwo}
           />
         ))}
       </ul>

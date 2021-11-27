@@ -19,7 +19,7 @@ export default class SimpleSlider extends Component {
           {item.map(eachItem => (
             <li className="new" key={eachItem.id}>
               <img
-                src={eachItem.imageUrl}
+                src={eachItem.imageItem}
                 alt="offer"
                 className="carouselImage"
               />

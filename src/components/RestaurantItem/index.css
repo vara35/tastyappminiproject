@@ -35,11 +35,11 @@
 }
 .foodType {
   font-size: 12px;
-  color: #ffffff;
   font-family: DM Sans;
   font-style: Bold;
-  font-size: #64748b;
+  color: #64748b;
   line-height: 0;
+  margin-top: 4px;
 }
 @media screen and (max-width: 767px) {
   .list-item-restaurant {
@@ -47,10 +47,11 @@
     min-height: 100px;
   }
   .foodType {
-    font-size: 12px;
+    font-size: 10px;
     color: #64748b;
     font-family: DM Sans;
     font-style: Bold;
+    line-height: 0;
   }
 }
 .restaurant-image {
@@ -60,6 +61,16 @@
   flex-grow: 1;
   margin-right: 10px;
   border-radius: 8px;
+}
+.food-count {
+  font-size: 11px;
+  color: #64748b;
+  line-height: 1;
+  margin-top: 5px;
+}
+.food-review-count {
+  font-size: 8px;
+  color: #64748b;
 }
 @media screen and (min-width: 768px) and (max-width: 991px) {
   .restaurant-image {
@@ -75,6 +86,10 @@
     min-width: 153px;
     max-width: 155px;
   }
+  .food-count {
+    font-size: 11px;
+    margin-top: 2px;
+  }
 }
 .restaurant-name {
   font-family: DM Sans;
@@ -82,13 +97,6 @@
   font-size: 14px;
   color: #334155;
 }
-@media screen and (max-width: 767px) {
-  .restaurant-name {
-    font-size: 12px;
-    color: #1e293b;
-  }
-}
-
 .food-rating {
   font-family: DM Sans;
   font-style: Bold;
@@ -100,8 +108,38 @@
 .ratingColor {
   color: #ffcc00;
   margin-right: 5px;
+  height: 14px;
 }
+@media screen and (max-width: 767px) {
+  .restaurant-name {
+    font-size: 12px;
+    color: #1e293b;
+  }
+  .food-rating {
+    font-size: 11px;
+  }
+  .ratingColor {
+    color: #ffcc00;
+    margin-right: 5px;
+    height: 12px;
+  }
+}
+
 .star-container {
   display: flex;
   align-items: center;
+}
+.main-restaurant-list {
+  list-style-type: none;
+  width: 33%;
+}
+@media screen and (max-width: 767px) {
+  .main-restaurant-list {
+    width: 86%;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .main-restaurant-list {
+    width: 46%;
+  }
 }

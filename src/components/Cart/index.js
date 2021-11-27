@@ -9,8 +9,6 @@ import CartItem from '../CartItem'
 
 import './index.css'
 
-// let count = 0
-
 const specificRestaurantComponent = {
   initial: 'INITIAL',
   inprogress: 'INPROGRESS',
@@ -25,6 +23,7 @@ class Cart extends Component {
     itemsCount: 1,
     cartIdentify: '',
     count: 0,
+    change: true,
   }
 
   componentDidMount() {
@@ -60,8 +59,11 @@ class Cart extends Component {
   }
 
   updateItems = id => {
-    console.log(id)
     this.setState(prev => ({itemsCount: prev.itemsCount + 1, cartIdentify: id}))
+  }
+
+  changeState = () => {
+    this.setState({change: false})
   }
 
   cartSuccess = () => {
@@ -70,17 +72,8 @@ class Cart extends Component {
     const convert = JSON.parse(getValues)
     const {count} = this.state
 
-    if (convert.length > 0) {
-      const getTotalPrice = convert.map(
-        eachItemCost => eachItemCost.quantity * eachItemCost.cost,
-      )
-      const addGetTotalPrice = getTotalPrice.reduce((One, add) => One + add)
-      //   count = addGetTotalPrice
-      //   this.setState({count: addGetTotalPrice})
-    }
-
     return convert.length > 0 ? (
-      <>
+      <div>
         <div className="cart-section-container">
           <div className="first-section-container">
             <div className="name-con">
@@ -97,6 +90,8 @@ class Cart extends Component {
                   updateItems={this.updateItems}
                   key={eachOne.id}
                   isTrue={cartIdentify}
+                  getCostFun={this.getCost}
+                  changeState={this.changeState}
                 />
               ))}
             </ul>
@@ -121,7 +116,7 @@ class Cart extends Component {
           </div>
         </div>
         <Footer />
-      </>
+      </div>
     ) : (
       <div className="cart-bottom-container">
         <img
@@ -131,7 +126,7 @@ class Cart extends Component {
         />
         <h1 className="cart-noProduct">No Order Yet!</h1>
         <p className="cart-your">
-          Your cart is empty. Add something from the menu
+          Your cart is empty. Add something from the menu.
         </p>
         <Link to="/">
           <button type="button" className="order">

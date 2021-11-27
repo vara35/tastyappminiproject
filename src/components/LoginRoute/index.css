@@ -90,6 +90,8 @@
 .login-website-image {
   width: 100%;
   height: 100vh;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
 }
 
 .login-image-container {

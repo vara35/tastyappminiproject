@@ -12,8 +12,6 @@ import Counter from '../Counter'
 
 import './index.css'
 
-let count = 1
-
 const sortByOptions = [
   {
     id: 0,
@@ -49,6 +47,7 @@ class Home extends Component {
     restaurantApiStatus: restaurantComponent.initial,
     sortedValue: sortByOptions[1].value,
     offSetValue: 1,
+    search: '',
   }
 
   componentDidMount() {
@@ -72,7 +71,7 @@ class Home extends Component {
       const carouselInfo = await response.json()
       const updatedCarouselInfo = carouselInfo.offers.map(eachItem => ({
         id: eachItem.id,
-        imageUrl: eachItem.image_url,
+        imageItem: eachItem.image_url,
       }))
       this.setState({
         carouselData: updatedCarouselInfo,
@@ -86,9 +85,9 @@ class Home extends Component {
   getRestaurant = async () => {
     const {sortedValue, offSetValue} = this.state
     this.setState({restaurantApiStatus: restaurantComponent.inprogress})
-
+    const offset = (offSetValue - 1) * 9
     const jwtToken = Cookies.get('jwt_token')
-    const restaurantUrl = `https://apis.ccbp.in/restaurants-list?offset=${offSetValue}&limit=${9}&sort_by_rating=${sortedValue}`
+    const restaurantUrl = `https://apis.ccbp.in/restaurants-list?offset=${offset}&limit=${9}&sort_by_rating=${sortedValue}`
     const options = {
       method: 'GET',
       headers: {
@@ -106,6 +105,8 @@ class Home extends Component {
           ratingColor: eachRestaurant.user_rating.rating_color,
           imageUrl: eachRestaurant.image_url,
           id: eachRestaurant.id,
+          reviewCount: eachRestaurant.user_rating.total_reviews,
+          cuisine: eachRestaurant.cuisine,
         }),
       )
 
@@ -172,13 +173,18 @@ class Home extends Component {
   }
 
   restaurantSuccess = () => {
-    const {restaurantData} = this.state
-    return (
+    const {restaurantData, search} = this.state
+    const searchResult = restaurantData.filter(eachSearch =>
+      eachSearch.name.toLowerCase().includes(search.toLowerCase()),
+    )
+    return searchResult.length > 0 ? (
       <ul className="ul-restaurant-item-container">
-        {restaurantData.map(eachOne => (
+        {searchResult.map(eachOne => (
           <RestaurantItem item={eachOne} key={eachOne.id} />
         ))}
       </ul>
+    ) : (
+      <h1 className="no-items">No Results Found</h1>
     )
   }
 
@@ -233,23 +239,21 @@ class Home extends Component {
   }
 
   decreaseItems = () => {
-    count -= 1
-    const offset = (count - 1) * 9
-    if (count > 0) {
-      this.setState({offSetValue: offset}, this.getRestaurant)
-    }
+    const {offSetValue} = this.state
+    this.setState({offSetValue: offSetValue - 1}, this.getRestaurant)
   }
 
   increaseItems = () => {
-    count += 1
-    const offset = (count - 1) * 9
-    if (count < 5) {
-      this.setState({offSetValue: offset}, this.getRestaurant)
-    }
+    const {offSetValue} = this.state
+    this.setState({offSetValue: offSetValue + 1}, this.getRestaurant)
+  }
+
+  updateSearchResult = search => {
+    this.setState({search})
   }
 
   render() {
-    const {sortedValue, offSetValue} = this.state
+    const {sortedValue} = this.state
     const JwtToken = Cookies.get('jwt_token')
     if (JwtToken === undefined) {
       return <Redirect to="/login" />
@@ -263,13 +267,13 @@ class Home extends Component {
             sortByOptions={sortByOptions}
             updateSortItems={this.updateSortItems}
             sortedValue={sortedValue}
+            updateSearchResult={this.updateSearchResult}
           />
           <hr />
           {this.getRestaurantComponent()}
           <Counter
             decreaseItems={this.decreaseItems}
             increaseItems={this.increaseItems}
-            offSetValue={offSetValue}
           />
         </div>
         <Footer />

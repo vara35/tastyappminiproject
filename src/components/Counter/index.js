@@ -36,11 +36,11 @@ class Counter extends Component {
         >
           <FaLessThan className="icon" />
         </button>
+
         <div testid="active-page-number">
-          <p>
-            <span>{activeCount}</span> of 4
-          </p>
+          <p>{activeCount} of 4</p>
         </div>
+
         <button
           type="button"
           onClick={this.onIncrement}
