@@ -37,9 +37,9 @@ class Counter extends Component {
           <FaLessThan className="icon" />
         </button>
 
-        <div testid="active-page-number">
-          <p>{activeCount} of 4</p>
-        </div>
+        <p>
+          <span testid="active-page-number">{activeCount}</span> of 4
+        </p>
 
         <button
           type="button"

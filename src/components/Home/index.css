@@ -1,5 +1,6 @@
 .home-container {
   min-height: 100vh;
+  background-color: #fafbfc;
 }
 .home-items-container {
   display: flex;
