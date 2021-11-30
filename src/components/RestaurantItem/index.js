@@ -11,7 +11,7 @@ const RestaurantItem = props => {
         <li className="list-item-restaurant">
           <img
             src={item.imageUrl}
-            alt="FoodItem"
+            alt="restaurant"
             className="restaurant-image"
           />
           <div className="restaurant-name-container">

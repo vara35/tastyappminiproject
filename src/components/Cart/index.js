@@ -33,9 +33,12 @@ class Cart extends Component {
 
   getCost = () => {
     const getValues = localStorage.getItem('cartData')
-    const convert = JSON.parse(getValues)
+    let convert
+    if (getValues !== null) {
+      convert = JSON.parse(getValues)
+    }
 
-    if (convert.length > 0) {
+    if (convert !== undefined) {
       const getTotalPrice = convert.map(
         eachItemCost => eachItemCost.quantity * eachItemCost.cost,
       )
@@ -49,12 +52,8 @@ class Cart extends Component {
     this.setState({cartApiStatus: specificRestaurantComponent.success})
   }
 
-  updateCost = cost => {
-    console.log(cost)
-  }
-
   updateState = () => {
-    localStorage.setItem('cartData', JSON.stringify([]))
+    localStorage.removeItem('cartData')
     this.setState({cartApiStatus: specificRestaurantComponent.payed})
   }
 
@@ -67,12 +66,13 @@ class Cart extends Component {
   }
 
   cartSuccess = () => {
-    const {itemsCount, cartIdentify} = this.state
-    const getValues = localStorage.getItem('cartData')
-    const convert = JSON.parse(getValues)
-    const {count} = this.state
-
-    return convert.length > 0 ? (
+    const {itemsCount, cartIdentify, count} = this.state
+    const getValuesFromLocal = localStorage.getItem('cartData')
+    let converting
+    if (getValuesFromLocal !== null) {
+      converting = JSON.parse(getValuesFromLocal)
+    }
+    return converting !== undefined ? (
       <div>
         <div className="cart-section-container">
           <div className="first-section-container">
@@ -82,7 +82,7 @@ class Cart extends Component {
               <h1 className="item-name">Price</h1>
             </div>
             <ul className="cart-ul-container">
-              {convert.map(eachOne => (
+              {converting.map(eachOne => (
                 <CartItem
                   itemCart={eachOne}
                   updateCost={this.updateCost}

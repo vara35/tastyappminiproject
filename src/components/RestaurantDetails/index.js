@@ -9,8 +9,8 @@ const RestaurantDetails = props => {
     <div className="item-details-containers">
       <div className="specific-card">
         <img
-          src={specificItemsDetails.image_url}
-          alt="restaurant"
+          src={specificItemsDetails.imageUrl}
+          alt="FoodItem"
           className="specific-item"
         />
         <div className="details-con">

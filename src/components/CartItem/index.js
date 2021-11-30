@@ -14,11 +14,16 @@ class CartItem extends Component {
     const {itemCart} = this.props
 
     const getSaveItemsOne = localStorage.getItem('cartData')
-    const convertSaveItemsOne = JSON.parse(getSaveItemsOne)
-    if (convertSaveItemsOne.length > 0) {
+    let convertSaveItemsOne
+    if (getSaveItemsOne !== null) {
+      convertSaveItemsOne = JSON.parse(getSaveItemsOne)
+    }
+
+    if (convertSaveItemsOne !== undefined) {
       const getQuantityFromSaveItemsOne = convertSaveItemsOne.filter(
         eachOne => eachOne.id === itemCart.id,
       )
+
       if (getQuantityFromSaveItemsOne.length > 0) {
         this.setState({newArrayOne: getQuantityFromSaveItemsOne[0].quantity})
       }
@@ -29,14 +34,20 @@ class CartItem extends Component {
     const {itemCart, getCostFun} = this.props
 
     const getSaveItems = localStorage.getItem('cartData')
-    const convertSaveItems = JSON.parse(getSaveItems)
-    const getSaveItemsFromMap = convertSaveItems.map(eachFood => {
-      if (eachFood.id === itemCart.id) {
-        return {...eachFood, quantity: eachFood.quantity + 1}
-      }
-      return eachFood
-    })
-    localStorage.setItem('cartData', JSON.stringify(getSaveItemsFromMap))
+    let convertSaveItems
+    if (getSaveItems !== null) {
+      convertSaveItems = JSON.parse(getSaveItems)
+    }
+    if (convertSaveItems !== undefined) {
+      const getSaveItemsFromMap = convertSaveItems.map(eachFood => {
+        if (eachFood.id === itemCart.id) {
+          return {...eachFood, quantity: eachFood.quantity + 1}
+        }
+        return eachFood
+      })
+
+      localStorage.setItem('cartData', JSON.stringify(getSaveItemsFromMap))
+    }
     this.showQuantity()
     getCostFun()
   }
@@ -45,27 +56,32 @@ class CartItem extends Component {
     const {itemCart, getCostFun, changeState} = this.props
 
     const getSaveItems = localStorage.getItem('cartData')
-    const convertSaveItems = JSON.parse(getSaveItems)
+    let convertSaveItems
+    if (getSaveItems !== null) {
+      convertSaveItems = JSON.parse(getSaveItems)
+    }
 
-    const getSaveItemsFromMap = convertSaveItems.map(eachFood => {
-      if (eachFood.id === itemCart.id) {
-        if (eachFood.quantity > 1) {
-          return {...eachFood, quantity: eachFood.quantity - 1}
+    if (convertSaveItems !== undefined) {
+      const getSaveItemsFromMap = convertSaveItems.map(eachFood => {
+        if (eachFood.id === itemCart.id) {
+          if (eachFood.quantity > 1) {
+            return {...eachFood, quantity: eachFood.quantity - 1}
+          }
+          return []
         }
-        return []
-      }
-      return eachFood
-    })
+        return eachFood
+      })
+      const getValueFromFilters = getSaveItemsFromMap.filter(
+        eachFilter => eachFilter.length !== 0,
+      )
 
-    const getValueFromFilters = getSaveItemsFromMap.filter(
-      eachFilter => eachFilter.length !== 0,
-    )
-    if (getValueFromFilters.length > 0) {
-      localStorage.setItem('cartData', JSON.stringify(getValueFromFilters))
-      changeState()
-    } else {
-      localStorage.setItem('cartData', JSON.stringify([]))
-      changeState()
+      if (getValueFromFilters.length > 0) {
+        localStorage.setItem('cartData', JSON.stringify(getValueFromFilters))
+        changeState()
+      } else {
+        localStorage.removeItem('cartData')
+        changeState()
+      }
     }
     this.showQuantity()
     getCostFun()

@@ -13,15 +13,20 @@ class ParticularItem extends Component {
   }
 
   showQuantity = () => {
-    const {cartID} = this.props
+    const {cartID, item} = this.props
 
     const getSaveItemsOne = localStorage.getItem('cartData')
-    const convertSaveItemsOne = JSON.parse(getSaveItemsOne)
-    const getQuantityFromSaveItemsOne = convertSaveItemsOne.filter(
-      eachOne => eachOne.id === cartID,
-    )
-    if (getQuantityFromSaveItemsOne.length > 0) {
-      this.setState({newArrayOne: getQuantityFromSaveItemsOne[0].quantity})
+    let convertSaveItemsOne
+    if (getSaveItemsOne !== null) {
+      convertSaveItemsOne = JSON.parse(getSaveItemsOne)
+    }
+    if (convertSaveItemsOne !== undefined) {
+      const getQuantityFromSaveItemsOne = convertSaveItemsOne.filter(
+        eachOne => eachOne.id === item.id,
+      )
+      if (getQuantityFromSaveItemsOne.length > 0) {
+        this.setState({newArrayOne: getQuantityFromSaveItemsOne[0].quantity})
+      }
     }
   }
 
@@ -30,8 +35,11 @@ class ParticularItem extends Component {
     updateCart(item.id)
 
     const getSaveItems = localStorage.getItem('cartData')
-    const convertSaveItems = JSON.parse(getSaveItems)
-    if (convertSaveItems.length > 0) {
+    let convertSaveItems
+    if (getSaveItems !== null) {
+      convertSaveItems = JSON.parse(getSaveItems)
+    }
+    if (convertSaveItems !== undefined) {
       const getSaveItemsFromMap = convertSaveItems.map(eachFood => {
         if (eachFood.id === item.id) {
           return {...eachFood, quantity: eachFood.quantity + 1}
@@ -48,26 +56,31 @@ class ParticularItem extends Component {
     const {item, updateCartTwo} = this.props
 
     const getSaveItems = localStorage.getItem('cartData')
-    const convertSaveItems = JSON.parse(getSaveItems)
-
-    const getSaveItemsFromMap = convertSaveItems.map(eachFood => {
-      if (eachFood.id === item.id) {
-        if (eachFood.quantity === 1) {
+    let convertSaveItems
+    if (convertSaveItems !== null) {
+      convertSaveItems = JSON.parse(getSaveItems)
+    }
+    if (convertSaveItems !== undefined) {
+      const getSaveItemsFromMap = convertSaveItems.map(eachFood => {
+        if (eachFood.id === item.id) {
+          if (eachFood.quantity > 1) {
+            return {...eachFood, quantity: eachFood.quantity - 1}
+          }
           updateCartTwo()
           return []
         }
-        return {...eachFood, quantity: eachFood.quantity - 1}
+        return eachFood
+      })
+      const getValueFromFilters = getSaveItemsFromMap.filter(
+        eachFilter => eachFilter.length !== 0,
+      )
+      console.log(getValueFromFilters)
+      if (getValueFromFilters.length > 0) {
+        localStorage.setItem('cartData', JSON.stringify(getValueFromFilters))
+        console.log('edit Items')
+      } else {
+        localStorage.removeItem('cartData')
       }
-      return eachFood
-    })
-
-    const getValueFromFilters = getSaveItemsFromMap.filter(
-      eachFilter => eachFilter.length !== 0,
-    )
-    if (getValueFromFilters.length > 0) {
-      localStorage.setItem('cartData', JSON.stringify(getValueFromFilters))
-    } else {
-      localStorage.setItem('cartData', JSON.stringify([]))
     }
     this.showQuantity()
   }

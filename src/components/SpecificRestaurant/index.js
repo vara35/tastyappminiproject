@@ -52,7 +52,7 @@ class SpecificRestaurant extends Component {
       const updatedRestaurantInfo = {
         costForTwo: restaurantInfo.cost_for_two,
         cuisine: restaurantInfo.cuisine,
-        image_url: restaurantInfo.image_url,
+        imageUrl: restaurantInfo.image_url,
         id: restaurantInfo.id,
         itemsCount: restaurantInfo.items_count,
         location: restaurantInfo.location,
@@ -87,13 +87,16 @@ class SpecificRestaurant extends Component {
     )
 
     const getSaveItemsOne = localStorage.getItem('cartData')
-    const convertSaveItemsOne = JSON.parse(getSaveItemsOne)
+    let convertSaveItemsOne
+    let existingItems
+    if (getSaveItemsOne !== null) {
+      convertSaveItemsOne = JSON.parse(getSaveItemsOne)
+    }
+    if (convertSaveItemsOne !== undefined) {
+      existingItems = convertSaveItemsOne.some(eachItem => eachItem.id === id)
+    }
 
-    const check = convertSaveItemsOne.some(
-      eachFoodItem => eachFoodItem.id === id,
-    )
-
-    if (check === false) {
+    if (convertSaveItemsOne === undefined || existingItems === false) {
       const updateCartItems = filterItems.map(eachOne => ({
         cost: eachOne.cost,
         quantity: 1,
