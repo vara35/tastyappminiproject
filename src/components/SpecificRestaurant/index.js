@@ -16,8 +16,6 @@ const specificRestaurantComponent = {
   failure: 'FAILURE',
 }
 
-const newArray = []
-
 class SpecificRestaurant extends Component {
   state = {
     specificApiStatus: specificRestaurantComponent.initial,
@@ -25,6 +23,7 @@ class SpecificRestaurant extends Component {
     specificItemsDetails: [],
     cartId: '',
     isTrue: false,
+    newArray: [],
   }
 
   componentDidMount() {
@@ -81,7 +80,7 @@ class SpecificRestaurant extends Component {
   }
 
   updateCart = id => {
-    const {specificRestaurant} = this.state
+    const {specificRestaurant, newArray} = this.state
     const filterItems = specificRestaurant.filter(
       eachItem => eachItem.id === id,
     )
@@ -105,6 +104,7 @@ class SpecificRestaurant extends Component {
         name: eachOne.name,
       }))
       newArray.push(updateCartItems[0])
+      this.setState({newArray})
       localStorage.setItem('cartData', JSON.stringify(newArray))
     }
 

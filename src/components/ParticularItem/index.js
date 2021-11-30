@@ -74,10 +74,8 @@ class ParticularItem extends Component {
       const getValueFromFilters = getSaveItemsFromMap.filter(
         eachFilter => eachFilter.length !== 0,
       )
-      console.log(getValueFromFilters)
       if (getValueFromFilters.length > 0) {
         localStorage.setItem('cartData', JSON.stringify(getValueFromFilters))
-        console.log('edit Items')
       } else {
         localStorage.removeItem('cartData')
       }
