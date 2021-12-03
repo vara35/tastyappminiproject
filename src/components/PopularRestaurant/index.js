@@ -10,7 +10,7 @@ const PopularRestaurant = props => {
     updateSearchResult,
   } = props
 
-  const SortItemsFuntion = event => {
+  const SortItemsFunction = event => {
     updateSortItems(event.target.value)
   }
 
@@ -39,7 +39,7 @@ const PopularRestaurant = props => {
           <p className="sort">Sort By</p>
           <select
             className="drop-down"
-            onChange={SortItemsFuntion}
+            onChange={SortItemsFunction}
             value={sortedValue}
           >
             {sortByOptions.map(eachItem => (
