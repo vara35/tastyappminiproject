@@ -84,3 +84,8 @@
   font-size: 26px;
   color: #475569;
 }
+@media screen and (max-width: 767px) {
+  .no-items {
+    font-size: 15px;
+  }
+}

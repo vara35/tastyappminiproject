@@ -30,7 +30,7 @@ const PopularRestaurant = props => {
       <input
         type="search"
         className="search-bar"
-        placeholder="Search "
+        placeholder="Search"
         onChange={showSearch}
       />
       <div className="icon-bar-container">

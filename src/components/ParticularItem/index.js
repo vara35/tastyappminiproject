@@ -13,7 +13,7 @@ class ParticularItem extends Component {
   }
 
   showQuantity = () => {
-    const {cartID, item} = this.props
+    const {item} = this.props
 
     const getSaveItemsOne = localStorage.getItem('cartData')
     let convertSaveItemsOne
