@@ -15,10 +15,11 @@ class LoginRoute extends Component {
   }
 
   setToken = JwtToken => {
+    this.setState({loginLoader: false})
+
     const {history} = this.props
     Cookies.set('jwt_token', JwtToken, {expires: 30})
     history.replace('/')
-    this.setState({loginLoader: false})
   }
 
   setError = errorText => {

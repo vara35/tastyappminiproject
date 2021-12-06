@@ -174,3 +174,7 @@
 .horizontal-line {
   width: 100%;
 }
+.mention-width {
+  width: 30%;
+  text-align: center;
+}

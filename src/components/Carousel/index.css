@@ -1,9 +1,9 @@
 .new {
-  height: 240px;
+  height: 200px;
   background-size: cover;
 }
 .carouselImage {
-  height: 240px;
+  height: 200px;
   width: 100%;
 }
 @media screen and (max-width: 767px) {
@@ -17,10 +17,10 @@
 }
 @media screen and (min-width: 768px) and (max-width: 991px) {
   .new {
-    height: 200px;
+    height: 165px;
   }
   .carouselImage {
-    height: 200px;
+    height: 165px;
     width: 100%;
   }
 }

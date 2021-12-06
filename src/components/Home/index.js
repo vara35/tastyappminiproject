@@ -122,7 +122,7 @@ class Home extends Component {
   carouselSuccess = () => {
     const {carouselData} = this.state
     return (
-      <ul className="caro-list">
+      <ul className="carousel-list">
         <Carousel item={carouselData} />
       </ul>
     )
@@ -131,6 +131,7 @@ class Home extends Component {
   carouselInprogress = () => (
     <div className="home-new" testid="restaurants-offers-loader">
       <Loader type="TailSpin" height="30px" width="30px" color="#F7931E" />
+      <p className="loading-text">Loading...</p>
     </div>
   )
 
@@ -191,6 +192,7 @@ class Home extends Component {
   restaurantInprogress = () => (
     <div className="home-new" testid="restaurants-list-loader">
       <Loader type="TailSpin" height="30px" width="30px" color="#F7931E" />
+      <p className="loading-text">Loading...</p>
     </div>
   )
 
@@ -271,6 +273,7 @@ class Home extends Component {
           />
           <hr />
           {this.getRestaurantComponent()}
+
           <Counter
             decreaseItems={this.decreaseItems}
             increaseItems={this.increaseItems}

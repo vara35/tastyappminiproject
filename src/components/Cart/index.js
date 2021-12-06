@@ -77,9 +77,10 @@ class Cart extends Component {
         <div className="cart-section-container">
           <div className="first-section-container">
             <div className="name-con">
-              <h1 className="item-name">Item</h1>
+              <h1 className="item-name mention-width">Item</h1>
               <h1 className="item-name">Quantity</h1>
               <h1 className="item-name">Price</h1>
+              <h1 className="item-name">Remove</h1>
             </div>
             <ul className="cart-ul-container">
               {converting.map(eachOne => (

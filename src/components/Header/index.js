@@ -24,12 +24,6 @@ class Header extends Component {
     this.setState({burgerState: false})
   }
 
-  showSearch = event => {
-    if (event.key === 'Enter') {
-      console.log(event.target.value)
-    }
-  }
-
   render() {
     const {burgerState} = this.state
     const {history} = this.props
@@ -97,11 +91,12 @@ class Header extends Component {
                 <h1 className={`header-home ${cartColor}`}>Cart</h1>
               </li>
             </Link>
+
             {/* <button
               type="button"
               className="header-button"
               onClick={this.removeToken}
-            >
+            > 
               Logout
             </button> */}
           </div>

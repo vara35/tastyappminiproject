@@ -62,10 +62,18 @@
     padding-right: 50px;
   }
 }
+.loading-text {
+  font-size: 18px;
+  color: #f7931e;
+  font-weight: 600;
+}
 @media screen and (max-width: 767px) {
   .ul-restaurant-item-container {
     padding-left: 25px;
     padding-right: 25px;
+  }
+  .loading-text {
+    font-size: 14px;
   }
 }
 .new-login {

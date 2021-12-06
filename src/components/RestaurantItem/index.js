@@ -5,10 +5,13 @@ import './index.css'
 
 const RestaurantItem = props => {
   const {item} = props
+  const addColorToRating =
+    item.rating >= 4.0 ? 'ratingColor' : 'removeRatingColor'
+
   return (
     <li testid="restaurant-item" className="main-restaurant-list">
       <Link to={`/restaurant/${item.id}`} className="add-new">
-        <li className="list-item-restaurant">
+        <div className="list-item-restaurant">
           <img
             src={item.imageUrl}
             alt="restaurant"
@@ -19,12 +22,12 @@ const RestaurantItem = props => {
             <p className="foodType">{item.menuType}</p>
             <p className="food-count">{item.cuisine}</p>
             <div className="star-container">
-              <BsStarFill className="ratingColor" />
+              <BsStarFill className={`${addColorToRating} ratingColor`} />
               <p className="food-rating">{item.rating}</p>
               <h1 className="food-review-count">{`(${item.reviewCount} reviews)`}</h1>
             </div>
           </div>
-        </li>
+        </div>
       </Link>
     </li>
   )

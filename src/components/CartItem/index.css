@@ -18,7 +18,7 @@
   color: black;
 }
 .cart-image {
-  width: 150px;
+  min-width: 150px;
   height: 100px;
   border-radius: 10px;
   margin-right: 10px;
@@ -85,8 +85,12 @@
   .cart-name {
     display: none;
   }
+  .remove-icon {
+    display: none;
+  }
 }
 .cart-merge {
   display: flex;
   align-items: center;
+  width: 30%;
 }

@@ -23,7 +23,6 @@
 .list-item-restaurant {
   display: flex;
   align-items: flex-start;
-  list-style-type: none;
   width: 100%;
   min-height: 125px;
   margin-right: 10px;
@@ -142,4 +141,10 @@
   .main-restaurant-list {
     width: 46%;
   }
+}
+.ratingColor {
+  color: #22f2bb;
+}
+.removeRatingColor {
+  color: #ffcc00;
 }

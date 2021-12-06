@@ -21,8 +21,6 @@ class SpecificRestaurant extends Component {
     specificApiStatus: specificRestaurantComponent.initial,
     specificRestaurant: [],
     specificItemsDetails: [],
-    cartId: '',
-    isTrue: false,
     newArray: [],
   }
 
@@ -107,16 +105,10 @@ class SpecificRestaurant extends Component {
       this.setState({newArray})
       localStorage.setItem('cartData', JSON.stringify(newArray))
     }
-
-    this.setState({cartId: id, isTrue: true})
-  }
-
-  updateCartTwo = () => {
-    this.setState({isTrue: false})
   }
 
   restaurantSuccess = () => {
-    const {specificRestaurant, cartId, isTrue} = this.state
+    const {specificRestaurant} = this.state
 
     return (
       <ul className="ul-restaurant-item-container">
@@ -125,9 +117,8 @@ class SpecificRestaurant extends Component {
             item={eachOne}
             key={eachOne.id}
             updateCart={this.updateCart}
-            isActive={isTrue}
-            cartID={cartId}
             updateCartTwo={this.updateCartTwo}
+            updateCartState={this.updateCartState}
           />
         ))}
       </ul>
@@ -137,6 +128,7 @@ class SpecificRestaurant extends Component {
   restaurantInprogress = () => (
     <div className="home-new" testid="restaurant-details-loader">
       <Loader type="TailSpin" height="30px" width="30px" color="#F7931E" />
+      <p className="loading-text">Loading...</p>
     </div>
   )
 

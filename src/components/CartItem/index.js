@@ -1,5 +1,6 @@
 import {BiRupee} from 'react-icons/bi'
 import {Component} from 'react'
+import {MdRemoveShoppingCart} from 'react-icons/md'
 
 import './index.css'
 
@@ -87,10 +88,31 @@ class CartItem extends Component {
     getCostFun()
   }
 
+  removeItemsFromCart = () => {
+    const {itemCart, changeState} = this.props
+    const getSaveItemsFromCart = localStorage.getItem('cartData')
+    let convertSaveItemsFromCart
+    if (getSaveItemsFromCart !== null) {
+      convertSaveItemsFromCart = JSON.parse(getSaveItemsFromCart)
+    }
+
+    if (convertSaveItemsFromCart !== undefined) {
+      const removeFromCart = convertSaveItemsFromCart.filter(
+        eachItem => eachItem.id !== itemCart.id,
+      )
+      if (removeFromCart.length > 0) {
+        localStorage.setItem('cartData', JSON.stringify(removeFromCart))
+        changeState()
+      } else {
+        localStorage.removeItem('cartData')
+        changeState()
+      }
+    }
+  }
+
   render() {
     const {itemCart} = this.props
     const {newArrayOne} = this.state
-
     return (
       <div testid="cartItem">
         <li className="cart-list">
@@ -99,7 +121,7 @@ class CartItem extends Component {
             <h1 className="cart-name">{itemCart.name}</h1>
           </div>
           <div className="cart-star-container">
-            {/* <h1 className="cart-name-mobile">{itemCart.name}</h1> */}
+            <h1 className="cart-name-mobile">{itemCart.name}</h1>
             <div className="cart-star-con">
               <div>
                 <button
@@ -135,6 +157,10 @@ class CartItem extends Component {
             <BiRupee className="color" />
             <p className="color">{itemCart.cost}</p>
           </div>
+          <MdRemoveShoppingCart
+            className="remove-icon"
+            onClick={this.removeItemsFromCart}
+          />
         </li>
       </div>
     )

@@ -5,11 +5,12 @@ import {Component} from 'react'
 import './index.css'
 
 class ParticularItem extends Component {
-  state = {newArrayOne: 1}
+  state = {newArrayOne: 1, isActive: false}
 
   addItems = () => {
     const {item, updateCart} = this.props
     updateCart(item.id)
+    this.setState({isActive: true})
   }
 
   showQuantity = () => {
@@ -31,8 +32,7 @@ class ParticularItem extends Component {
   }
 
   updateCartSaveItems = () => {
-    const {item, updateCart} = this.props
-    updateCart(item.id)
+    const {item} = this.props
 
     const getSaveItems = localStorage.getItem('cartData')
     let convertSaveItems
@@ -53,11 +53,11 @@ class ParticularItem extends Component {
   }
 
   removeCartSaveItems = () => {
-    const {item, updateCartTwo} = this.props
+    const {item} = this.props
 
     const getSaveItems = localStorage.getItem('cartData')
     let convertSaveItems
-    if (convertSaveItems !== null) {
+    if (getSaveItems !== null) {
       convertSaveItems = JSON.parse(getSaveItems)
     }
     if (convertSaveItems !== undefined) {
@@ -66,7 +66,7 @@ class ParticularItem extends Component {
           if (eachFood.quantity > 1) {
             return {...eachFood, quantity: eachFood.quantity - 1}
           }
-          updateCartTwo()
+          this.setState({isActive: false})
           return []
         }
         return eachFood
@@ -84,8 +84,10 @@ class ParticularItem extends Component {
   }
 
   render() {
-    const {item, isActive} = this.props
-    const {newArrayOne} = this.state
+    const {item} = this.props
+    const {newArrayOne, isActive} = this.state
+    const addColorToRating =
+      item.rating >= 4.0 ? 'ratingColor' : 'removeRatingColor'
 
     return (
       <li className="add-new">
@@ -98,7 +100,7 @@ class ParticularItem extends Component {
               <p className="particular-foodType">{item.cost}</p>
             </div>
             <div className="star-container">
-              <BsStarFill className="ratingColor" />
+              <BsStarFill className={`${addColorToRating} ratingColor`} />
               <p className="food-rating">{item.rating}</p>
             </div>
             {isActive ? (
