@@ -10,7 +10,7 @@ const RestaurantDetails = props => {
       <div className="specific-card">
         <img
           src={specificItemsDetails.imageUrl}
-          alt="FoodItem"
+          alt="restaurant"
           className="specific-item"
         />
         <div className="details-con">

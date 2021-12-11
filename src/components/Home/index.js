@@ -179,11 +179,13 @@ class Home extends Component {
       eachSearch.name.toLowerCase().includes(search.toLowerCase()),
     )
     return searchResult.length > 0 ? (
-      <ul className="ul-restaurant-item-container">
-        {searchResult.map(eachOne => (
-          <RestaurantItem item={eachOne} key={eachOne.id} />
-        ))}
-      </ul>
+      <>
+        <ul className="ul-restaurant-item-container">
+          {searchResult.map(eachOne => (
+            <RestaurantItem item={eachOne} key={eachOne.id} />
+          ))}
+        </ul>
+      </>
     ) : (
       <h1 className="no-items">No Results Found</h1>
     )
@@ -273,7 +275,6 @@ class Home extends Component {
           />
           <hr />
           {this.getRestaurantComponent()}
-
           <Counter
             decreaseItems={this.decreaseItems}
             increaseItems={this.increaseItems}

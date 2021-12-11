@@ -19,6 +19,7 @@
 }
 .cart-image {
   min-width: 150px;
+  max-width: 151px;
   height: 100px;
   border-radius: 10px;
   margin-right: 10px;

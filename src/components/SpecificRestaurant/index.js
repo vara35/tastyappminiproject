@@ -19,6 +19,7 @@ const specificRestaurantComponent = {
 class SpecificRestaurant extends Component {
   state = {
     specificApiStatus: specificRestaurantComponent.initial,
+    specificRestaurantApi: specificRestaurantComponent.initial,
     specificRestaurant: [],
     specificItemsDetails: [],
     newArray: [],
@@ -29,7 +30,10 @@ class SpecificRestaurant extends Component {
   }
 
   getRestaurant = async () => {
-    this.setState({specificApiStatus: specificRestaurantComponent.inprogress})
+    this.setState({
+      specificApiStatus: specificRestaurantComponent.inprogress,
+      specificRestaurantApi: specificRestaurantComponent.inprogress,
+    })
 
     const {match} = this.props
     const {params} = match
@@ -69,11 +73,15 @@ class SpecificRestaurant extends Component {
       }))
       this.setState({
         specificApiStatus: specificRestaurantComponent.success,
+        specificRestaurantApi: specificRestaurantComponent.success,
         specificRestaurant: foodItems,
         specificItemsDetails: updatedRestaurantInfo,
       })
     } else {
-      this.setState({specificApiStatus: specificRestaurantComponent.failure})
+      this.setState({
+        specificApiStatus: specificRestaurantComponent.failure,
+        specificRestaurantApi: specificRestaurantComponent.failure,
+      })
     }
   }
 
@@ -172,14 +180,60 @@ class SpecificRestaurant extends Component {
     }
   }
 
-  render() {
+  restaurantDetailsSuccess = () => {
     const {specificItemsDetails} = this.state
+    return <RestaurantDetails specificItemsDetails={specificItemsDetails} />
+  }
 
+  restaurantDetailsInprogress = () => (
+    <div className="home-new" testid="restaurant-details-loader">
+      <Loader type="TailSpin" height="30px" width="30px" color="#F7931E" />
+      <p className="loading-text">Loading...</p>
+    </div>
+  )
+
+  restaurantDetailsFailure = () => (
+    <div className="home-new">
+      <img
+        src="https://res.cloudinary.com/image-link-getter/image/upload/v1633514187/Layer_1_errxca.jpg"
+        alt="not found"
+        className="not-found-image"
+      />
+      <h1 className="not-found-name"> Page Not Found</h1>
+      <p className="not-found-description">
+        we are sorry, the page you requested could not be found Please go back
+        to the homepage
+      </p>
+      <button
+        type="button"
+        className="retry-button"
+        onClick={this.initiateRestaurant}
+      >
+        Retry
+      </button>
+    </div>
+  )
+
+  getSpecificRestaurantComponent = () => {
+    const {specificRestaurantApi} = this.state
+    switch (specificRestaurantApi) {
+      case specificRestaurantComponent.success:
+        return this.restaurantDetailsSuccess()
+      case specificRestaurantComponent.inprogress:
+        return this.restaurantDetailsInprogress()
+      case specificRestaurantComponent.failure:
+        return this.restaurantDetailsFailure()
+      default:
+        return null
+    }
+  }
+
+  render() {
     return (
       <div className="home-container">
         <div className="home-items-container">
           <Header />
-          <RestaurantDetails specificItemsDetails={specificItemsDetails} />
+          {this.getSpecificRestaurantComponent()}
           {this.getRestaurantComponent()}
         </div>
         <Footer />

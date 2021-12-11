@@ -67,12 +67,12 @@ class ParticularItem extends Component {
             return {...eachFood, quantity: eachFood.quantity - 1}
           }
           this.setState({isActive: false})
-          return []
+          return null
         }
         return eachFood
       })
       const getValueFromFilters = getSaveItemsFromMap.filter(
-        eachFilter => eachFilter.length !== 0,
+        eachFilter => eachFilter !== null,
       )
       if (getValueFromFilters.length > 0) {
         localStorage.setItem('cartData', JSON.stringify(getValueFromFilters))

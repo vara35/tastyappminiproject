@@ -68,12 +68,13 @@ class CartItem extends Component {
           if (eachFood.quantity > 1) {
             return {...eachFood, quantity: eachFood.quantity - 1}
           }
-          return []
+          return null
         }
         return eachFood
       })
+
       const getValueFromFilters = getSaveItemsFromMap.filter(
-        eachFilter => eachFilter.length !== 0,
+        eachFilter => eachFilter !== null,
       )
 
       if (getValueFromFilters.length > 0) {
@@ -121,7 +122,7 @@ class CartItem extends Component {
             <h1 className="cart-name">{itemCart.name}</h1>
           </div>
           <div className="cart-star-container">
-            <h1 className="cart-name-mobile">{itemCart.name}</h1>
+            {/* <h1 className="cart-name-mobile">{itemCart.name}</h1> */}
             <div className="cart-star-con">
               <div>
                 <button

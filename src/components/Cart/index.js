@@ -72,7 +72,26 @@ class Cart extends Component {
     if (getValuesFromLocal !== null) {
       converting = JSON.parse(getValuesFromLocal)
     }
-    return converting !== undefined ? (
+    console.log(converting)
+
+    return converting === undefined ? (
+      <div className="cart-bottom-container">
+        <img
+          src="https://res.cloudinary.com/image-link-getter/image/upload/v1633884154/OBJECTSbowl_xqhwmy.jpg"
+          alt="empty cart"
+          className="cart-bowl"
+        />
+        <h1 className="cart-noProduct">No Order Yet!</h1>
+        <p className="cart-your">
+          Your cart is empty. Add something from the menu.
+        </p>
+        <Link to="/">
+          <button type="button" className="order">
+            Order Now
+          </button>
+        </Link>
+      </div>
+    ) : (
       <div>
         <div className="cart-section-container">
           <div className="first-section-container">
@@ -117,23 +136,6 @@ class Cart extends Component {
           </div>
         </div>
         <Footer />
-      </div>
-    ) : (
-      <div className="cart-bottom-container">
-        <img
-          src="https://res.cloudinary.com/image-link-getter/image/upload/v1633884154/OBJECTSbowl_xqhwmy.jpg"
-          alt="empty cart"
-          className="cart-bowl"
-        />
-        <h1 className="cart-noProduct">No Order Yet!</h1>
-        <p className="cart-your">
-          Your cart is empty. Add something from the menu.
-        </p>
-        <Link to="/">
-          <button type="button" className="order">
-            Order Now
-          </button>
-        </Link>
       </div>
     )
   }
