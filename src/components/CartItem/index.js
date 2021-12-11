@@ -90,7 +90,7 @@ class CartItem extends Component {
   }
 
   removeItemsFromCart = () => {
-    const {itemCart, changeState} = this.props
+    const {itemCart, changeState, getCostFun} = this.props
     const getSaveItemsFromCart = localStorage.getItem('cartData')
     let convertSaveItemsFromCart
     if (getSaveItemsFromCart !== null) {
@@ -109,6 +109,7 @@ class CartItem extends Component {
         changeState()
       }
     }
+    getCostFun()
   }
 
   render() {

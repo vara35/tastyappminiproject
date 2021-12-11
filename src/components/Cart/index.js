@@ -72,7 +72,6 @@ class Cart extends Component {
     if (getValuesFromLocal !== null) {
       converting = JSON.parse(getValuesFromLocal)
     }
-    console.log(converting)
 
     return converting === undefined ? (
       <div className="cart-bottom-container">
