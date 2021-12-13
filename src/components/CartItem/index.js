@@ -150,15 +150,15 @@ class CartItem extends Component {
               </div>
             </div>
 
-            {/* <div className="hide-button">
+            <div className="hide-button">
               <BiRupee className="color" />
               <p className="color">{itemCart.cost}</p>
-            </div> */}
+            </div>
           </div>
-          <div className="mobile-cart-merge">
+          {/* <div className="mobile-cart-merge">
             <BiRupee className="color" />
             <p className="color">{itemCart.cost}</p>
-          </div>
+          </div> */}
           <MdRemoveShoppingCart
             className="remove-icon"
             onClick={this.removeItemsFromCart}

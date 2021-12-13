@@ -67,13 +67,13 @@ class LoginRoute extends Component {
       <div className="login-container">
         <div className="login-details-container">
           <div className="user-details-container">
-            {/* <div className="mobile-image-container">
-              <img
+            <div className="mobile-image-container">
+              {/* <img
                 src="https://res.cloudinary.com/image-link-getter/image/upload/v1633413170/Rectangle_1457mobileDishImage_2_cnapv3.jpg"
                 alt="website login"
                 className="mobile-logo"
-              />
-            </div> */}
+              /> */}
+            </div>
             <div className="tasty-logo-container">
               <img
                 src="https://res.cloudinary.com/image-link-getter/image/upload/v1633350279/Vectorlogo_cxrhby.jpg"

@@ -66,13 +66,13 @@ class Header extends Component {
                 <h1 className={`header-home ${cartColor}`}>Cart</h1>
               </li>
             </Link>
-            <button
+            {/* <button
               type="button"
               className="header-button"
               onClick={this.removeToken}
             >
               Logout
-            </button>
+            </button> */}
           </ul>
         </nav>
         <ul className={burgerStateOne}>
@@ -92,13 +92,13 @@ class Header extends Component {
               </li>
             </Link>
 
-            {/* <button
+            <button
               type="button"
               className="header-button"
               onClick={this.removeToken}
-            > 
+            >
               Logout
-            </button> */}
+            </button>
           </div>
           <AiFillCloseCircle className="closer" onClick={this.getHam} />
         </ul>
