@@ -1,5 +1,5 @@
 .add-new {
-  width: 30%;
+  width: 33%;
   text-decoration: none;
   margin-top: 20px;
   margin-right: 16px;
@@ -24,7 +24,7 @@
   display: flex;
   align-items: flex-start;
   width: 100%;
-  min-height: 125px;
+  min-height: 100vh;
   margin-right: 10px;
 }
 
@@ -43,7 +43,7 @@
 @media screen and (max-width: 767px) {
   .list-item-restaurant {
     width: 100%;
-    min-height: 100px;
+    min-height: 100vh;
   }
   .foodType {
     font-size: 10px;
@@ -54,7 +54,7 @@
   }
 }
 .restaurant-image {
-  height: 121px;
+  height: 100vh;
   min-width: 188px;
   max-width: 190px;
   flex-grow: 1;
@@ -134,7 +134,7 @@
 }
 @media screen and (max-width: 767px) {
   .main-restaurant-list {
-    width: 86%;
+    width: 90%;
   }
 }
 @media screen and (min-width: 768px) and (max-width: 991px) {

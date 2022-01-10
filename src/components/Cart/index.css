@@ -1,6 +1,7 @@
 .cart-container {
   height: 100vh;
   flex-grow: auto;
+  padding-bottom: 100px;
 }
 .cart-noProduct {
   font-family: DM Sans;
@@ -102,6 +103,7 @@
   width: 100%;
   padding-right: 100px;
   padding-left: 150px;
+  margin-bottom: 30px;
 }
 .place-order-button {
   background-color: #f7931e;
@@ -143,6 +145,12 @@
   font-size: 14px;
   color: #64748b;
 }
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .order-container {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
 @media screen and (max-width: 767px) {
   .payment-name {
     font-size: 16px;
@@ -175,6 +183,6 @@
   width: 100%;
 }
 .mention-width {
-  width: 30%;
+  width: 20%;
   text-align: center;
 }

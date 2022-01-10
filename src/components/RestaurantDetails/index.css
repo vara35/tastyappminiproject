@@ -33,7 +33,7 @@
 }
 .specific-cuisine {
   font-family: 'Roboto';
-  font-style: Regular;
+  font-style: 'Regular';
   font-size: 12px;
   line-height: 0;
   font-weight: 350;
@@ -41,7 +41,7 @@
 }
 .specific-location {
   font-family: 'Roboto';
-  font-style: Regular;
+  font-style: 'Regular';
   font-size: 12px;
   font-weight: 350;
   color: #ffffff;
@@ -49,6 +49,12 @@
 .line {
   margin-right: 10px;
 }
+.open-time {
+  font-size: 10.2px;
+  color: #e2e8f0;
+  line-height: 0;
+}
+
 @media screen and (min-width: 768px) and (max-width: 992px) {
   .specific-item {
     height: 170px;
@@ -70,8 +76,8 @@
     border-top-right-radius: 360px;
     border-bottom-right-radius: 400px;
   }
-  .item-details-containers {
-    height: 185px;
+  .item-details-container {
+    width: 200px;
   }
   .specific-name {
     font-size: 16px;
@@ -106,15 +112,15 @@
 }
 
 .specific-rating {
-  font-family: Roboto;
-  font-style: Regular;
+  font-family: 'Roboto';
+  font-style: 'Regular';
   font-size: 12px;
   line-height: 0;
   color: #ffffff;
 }
 .specific-reviewCount {
-  font-family: Roboto;
-  font-style: Regular;
+  font-family: 'Roboto';
+  font-style: 'Regular';
   font-size: 12px;
   color: #e2e8f0;
   line-height: 0;
@@ -139,5 +145,6 @@
   }
   .details-con {
     margin-top: 16px;
+    min-height: 185px;
   }
 }

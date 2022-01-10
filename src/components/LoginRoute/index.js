@@ -1,7 +1,7 @@
 import {Component} from 'react'
-import Cookies from 'js-cookie'
 import {Redirect} from 'react-router-dom'
 import Loader from 'react-loader-spinner'
+import Cookies from 'js-cookie'
 
 import './index.css'
 
@@ -14,16 +14,16 @@ class LoginRoute extends Component {
     loginLoader: false,
   }
 
+  setError = errorText => {
+    this.setState({errorText, errorMessage: true, loginLoader: false})
+  }
+
   setToken = JwtToken => {
     this.setState({loginLoader: false})
 
     const {history} = this.props
     Cookies.set('jwt_token', JwtToken, {expires: 30})
     history.replace('/')
-  }
-
-  setError = errorText => {
-    this.setState({errorText, errorMessage: true, loginLoader: false})
   }
 
   getLoginUser = async event => {
@@ -49,12 +49,12 @@ class LoginRoute extends Component {
     }
   }
 
-  updateUsername = event => {
-    this.setState({username: event.target.value})
-  }
-
   updatePassword = event => {
     this.setState({password: event.target.value})
+  }
+
+  updateUsername = event => {
+    this.setState({username: event.target.value})
   }
 
   render() {
@@ -67,13 +67,6 @@ class LoginRoute extends Component {
       <div className="login-container">
         <div className="login-details-container">
           <div className="user-details-container">
-            <div className="mobile-image-container">
-              {/* <img
-                src="https://res.cloudinary.com/image-link-getter/image/upload/v1633413170/Rectangle_1457mobileDishImage_2_cnapv3.jpg"
-                alt="website login"
-                className="mobile-logo"
-              /> */}
-            </div>
             <div className="tasty-logo-container">
               <img
                 src="https://res.cloudinary.com/image-link-getter/image/upload/v1633350279/Vectorlogo_cxrhby.jpg"
@@ -84,7 +77,7 @@ class LoginRoute extends Component {
             </div>
             <h1 className="login">Login</h1>
             {loginLoader && (
-              <div className="home-login">
+              <div className="login-spinner">
                 <Loader
                   type="TailSpin"
                   height="30px"

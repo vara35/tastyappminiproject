@@ -7,12 +7,6 @@ import './index.css'
 class ParticularItem extends Component {
   state = {newArrayOne: 1, isActive: false}
 
-  addItems = () => {
-    const {item, updateCart} = this.props
-    updateCart(item.id)
-    this.setState({isActive: true})
-  }
-
   showQuantity = () => {
     const {item} = this.props
 
@@ -29,6 +23,12 @@ class ParticularItem extends Component {
         this.setState({newArrayOne: getQuantityFromSaveItemsOne[0].quantity})
       }
     }
+  }
+
+  addItems = () => {
+    const {item, updateCart} = this.props
+    updateCart(item.id)
+    this.setState({isActive: true})
   }
 
   updateCartSaveItems = () => {

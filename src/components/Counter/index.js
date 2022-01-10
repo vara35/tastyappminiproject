@@ -1,6 +1,5 @@
 import {Component} from 'react'
 import {FaLessThan, FaGreaterThan} from 'react-icons/fa'
-
 import './index.css'
 
 class Counter extends Component {
@@ -27,28 +26,28 @@ class Counter extends Component {
   render() {
     const {activeCount} = this.state
     return (
-      <div className="greater-container">
-        <button
-          type="button"
-          onClick={this.onDecrement}
-          className="greater-icon"
-          testid="pagination-left-button"
-        >
-          <FaLessThan className="icon" />
-        </button>
-
-        <p>
-          <span testid="active-page-number">{activeCount}</span> of 4
-        </p>
-
-        <button
-          type="button"
-          onClick={this.onIncrement}
-          className="greater-icon"
-          testid="pagination-right-button"
-        >
-          <FaGreaterThan className="icon" />
-        </button>
+      <div className="convert">
+        <div className="greater-container">
+          <button
+            type="button"
+            onClick={this.onDecrement}
+            className="greater-icon"
+            testid="pagination-left-button"
+          >
+            <FaLessThan className="icon" />
+          </button>
+          <p>
+            <span testid="active-page-number">{activeCount}</span> of 4
+          </p>
+          <button
+            type="button"
+            onClick={this.onIncrement}
+            className="greater-icon"
+            testid="pagination-right-button"
+          >
+            <FaGreaterThan className="icon" />
+          </button>
+        </div>
       </div>
     )
   }

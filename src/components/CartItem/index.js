@@ -31,6 +31,29 @@ class CartItem extends Component {
     }
   }
 
+  removeItemsFromCart = () => {
+    const {itemCart, changeState, getCostFun} = this.props
+    const getSaveItemsFromCart = localStorage.getItem('cartData')
+    let convertSaveItemsFromCart
+    if (getSaveItemsFromCart !== null) {
+      convertSaveItemsFromCart = JSON.parse(getSaveItemsFromCart)
+    }
+
+    if (convertSaveItemsFromCart !== undefined) {
+      const removeFromCart = convertSaveItemsFromCart.filter(
+        eachItem => eachItem.id !== itemCart.id,
+      )
+      if (removeFromCart.length > 0) {
+        localStorage.setItem('cartData', JSON.stringify(removeFromCart))
+        changeState()
+      } else {
+        localStorage.removeItem('cartData')
+        changeState()
+      }
+    }
+    getCostFun()
+  }
+
   updateItemsCount = () => {
     const {itemCart, getCostFun} = this.props
 
@@ -89,29 +112,6 @@ class CartItem extends Component {
     getCostFun()
   }
 
-  removeItemsFromCart = () => {
-    const {itemCart, changeState, getCostFun} = this.props
-    const getSaveItemsFromCart = localStorage.getItem('cartData')
-    let convertSaveItemsFromCart
-    if (getSaveItemsFromCart !== null) {
-      convertSaveItemsFromCart = JSON.parse(getSaveItemsFromCart)
-    }
-
-    if (convertSaveItemsFromCart !== undefined) {
-      const removeFromCart = convertSaveItemsFromCart.filter(
-        eachItem => eachItem.id !== itemCart.id,
-      )
-      if (removeFromCart.length > 0) {
-        localStorage.setItem('cartData', JSON.stringify(removeFromCart))
-        changeState()
-      } else {
-        localStorage.removeItem('cartData')
-        changeState()
-      }
-    }
-    getCostFun()
-  }
-
   render() {
     const {itemCart} = this.props
     const {newArrayOne} = this.state
@@ -120,10 +120,9 @@ class CartItem extends Component {
         <li className="cart-list">
           <div className="cart-merge">
             <img src={itemCart.imageUrl} alt="Items" className="cart-image" />
-            <h1 className="cart-name">{itemCart.name}</h1>
           </div>
           <div className="cart-star-container">
-            {/* <h1 className="cart-name-mobile">{itemCart.name}</h1> */}
+            <h1 className="cart-name-mobile">{itemCart.name}</h1>
             <div className="cart-star-con">
               <div>
                 <button
@@ -155,10 +154,6 @@ class CartItem extends Component {
               <p className="color">{itemCart.cost}</p>
             </div>
           </div>
-          {/* <div className="mobile-cart-merge">
-            <BiRupee className="color" />
-            <p className="color">{itemCart.cost}</p>
-          </div> */}
           <MdRemoveShoppingCart
             className="remove-icon"
             onClick={this.removeItemsFromCart}

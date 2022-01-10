@@ -1,12 +1,11 @@
 import {Component} from 'react'
 import {Link} from 'react-router-dom'
-import Loader from 'react-loader-spinner'
 import {BiRupee} from 'react-icons/bi'
+import Loader from 'react-loader-spinner'
 
 import Header from '../Header'
-import Footer from '../Footer'
 import CartItem from '../CartItem'
-
+import Footer from '../Footer'
 import './index.css'
 
 const specificRestaurantComponent = {
@@ -23,12 +22,16 @@ class Cart extends Component {
     itemsCount: 1,
     cartIdentify: '',
     count: 0,
-    change: true,
   }
 
   componentDidMount() {
     this.getCart()
     this.getCost()
+  }
+
+  getCart = () => {
+    this.setState({cartApiStatus: specificRestaurantComponent.inprogress})
+    this.setState({cartApiStatus: specificRestaurantComponent.success})
   }
 
   getCost = () => {
@@ -47,22 +50,62 @@ class Cart extends Component {
     }
   }
 
-  getCart = () => {
-    this.setState({cartApiStatus: specificRestaurantComponent.inprogress})
-    this.setState({cartApiStatus: specificRestaurantComponent.success})
-  }
+  restaurantPayed = () => (
+    <div className="payed-container">
+      <div className="payed-bottom-container">
+        <img
+          src="https://res.cloudinary.com/image-link-getter/image/upload/v1634020176/Vectorsucces_mkuizy.jpg"
+          alt="success"
+          className="success"
+        />
+        <h1 className="payment-name">Payment Successful</h1>
+        <p className="payment-status">
+          Thank you for ordering Your payment is successfully completed.
+        </p>
+        <Link to="/">
+          <button type="button" className="order">
+            Go To Home Page
+          </button>
+        </Link>
+      </div>
+    </div>
+  )
+
+  cartFailure = () => (
+    <div className="home-new">
+      <img
+        src="https://res.cloudinary.com/image-link-getter/image/upload/v1633514187/Layer_1_errxca.jpg"
+        alt="not found"
+        className="not-found-image"
+      />
+      <h1 className="not-found-name">Page Not Found</h1>
+      <p className="not-found-description">
+        we are sorry, the page you requested could not be found Please go back
+        to the homepage
+      </p>
+      <button type="button" className="retry-button">
+        Retry
+      </button>
+    </div>
+  )
+
+  cartInprogress = () => (
+    <div className="home-new">
+      <Loader type="TailSpin" height="30px" width="30px" color="#F7931E" />
+    </div>
+  )
 
   updateState = () => {
     localStorage.removeItem('cartData')
     this.setState({cartApiStatus: specificRestaurantComponent.payed})
   }
 
-  updateItems = id => {
-    this.setState(prev => ({itemsCount: prev.itemsCount + 1, cartIdentify: id}))
+  changeState = () => {
+    this.setState({cartApiStatus: specificRestaurantComponent.success})
   }
 
-  changeState = () => {
-    this.setState({change: false})
+  updateItems = id => {
+    this.setState(prev => ({itemsCount: prev.itemsCount + 1, cartIdentify: id}))
   }
 
   cartSuccess = () => {
@@ -96,6 +139,7 @@ class Cart extends Component {
           <div className="first-section-container">
             <div className="name-con">
               <h1 className="item-name mention-width">Item</h1>
+              <h1 className="item-name">Item Name</h1>
               <h1 className="item-name">Quantity</h1>
               <h1 className="item-name">Price</h1>
               <h1 className="item-name">Remove</h1>
@@ -138,51 +182,6 @@ class Cart extends Component {
       </div>
     )
   }
-
-  cartInprogress = () => (
-    <div className="home-new">
-      <Loader type="TailSpin" height="30px" width="30px" color="#F7931E" />
-    </div>
-  )
-
-  restaurantPayed = () => (
-    <div className="payed-container">
-      <div className="payed-bottom-container">
-        <img
-          src="https://res.cloudinary.com/image-link-getter/image/upload/v1634020176/Vectorsucces_mkuizy.jpg"
-          alt="success"
-          className="success"
-        />
-        <h1 className="payment-name">Payment Successful</h1>
-        <p className="payment-status">
-          Thank you for ordering Your payment is successfully completed.
-        </p>
-        <Link to="/">
-          <button type="button" className="order">
-            Go To Home Page
-          </button>
-        </Link>
-      </div>
-    </div>
-  )
-
-  cartFailure = () => (
-    <div className="home-new">
-      <img
-        src="https://res.cloudinary.com/image-link-getter/image/upload/v1633514187/Layer_1_errxca.jpg"
-        alt="not found"
-        className="not-found-image"
-      />
-      <h1 className="not-found-name">Page Not Found</h1>
-      <p className="not-found-description">
-        we are sorry, the page you requested could not be found Please go back
-        to the homepage
-      </p>
-      <button type="button" className="retry-button">
-        Retry
-      </button>
-    </div>
-  )
 
   getCartComponent = () => {
     const {cartApiStatus} = this.state

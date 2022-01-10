@@ -5,6 +5,7 @@ import './index.css'
 
 const RestaurantDetails = props => {
   const {specificItemsDetails} = props
+  const restaurantTime = specificItemsDetails.opensAt.split(' ')
   return (
     <div className="item-details-containers">
       <div className="specific-card">
@@ -40,6 +41,7 @@ const RestaurantDetails = props => {
               <p className="specific-reviewCount">Cost for two</p>
             </div>
           </div>
+          <p className="open-time">{`${restaurantTime[0]} ${restaurantTime[1]} Open Time`}</p>
         </div>
       </div>
     </div>

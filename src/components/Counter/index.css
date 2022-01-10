@@ -1,13 +1,13 @@
+.convert {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .greater-container {
   display: flex;
   align-items: center;
-  margin-top: 20px;
-  align-self: center;
 }
-.greater-main-container {
-  display: flex;
-  flex-direction: column;
-}
+
 .greater-icon {
   height: 26px;
   margin-left: 8px;

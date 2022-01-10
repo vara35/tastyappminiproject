@@ -3,10 +3,9 @@ import Loader from 'react-loader-spinner'
 import Cookies from 'js-cookie'
 
 import Header from '../Header'
-import Footer from '../Footer'
 import RestaurantDetails from '../RestaurantDetails'
 import ParticularItem from '../ParticularItem'
-
+import Footer from '../Footer'
 import './index.css'
 
 const specificRestaurantComponent = {
@@ -115,31 +114,6 @@ class SpecificRestaurant extends Component {
     }
   }
 
-  restaurantSuccess = () => {
-    const {specificRestaurant} = this.state
-
-    return (
-      <ul className="ul-restaurant-item-container">
-        {specificRestaurant.map(eachOne => (
-          <ParticularItem
-            item={eachOne}
-            key={eachOne.id}
-            updateCart={this.updateCart}
-            updateCartTwo={this.updateCartTwo}
-            updateCartState={this.updateCartState}
-          />
-        ))}
-      </ul>
-    )
-  }
-
-  restaurantInprogress = () => (
-    <div className="home-new" testid="restaurant-details-loader">
-      <Loader type="TailSpin" height="30px" width="30px" color="#F7931E" />
-      <p className="loading-text">Loading...</p>
-    </div>
-  )
-
   initiateRestaurant = () => {
     this.getRestaurant()
   }
@@ -166,6 +140,30 @@ class SpecificRestaurant extends Component {
     </div>
   )
 
+  restaurantInprogress = () => (
+    <div className="home-new" testid="restaurant-details-loader">
+      <Loader type="TailSpin" height="30px" width="30px" color="#F7931E" />
+      <p className="loading-text">Loading...</p>
+    </div>
+  )
+
+  restaurantSuccess = () => {
+    const {specificRestaurant} = this.state
+    return (
+      <ul className="ul-restaurant-item-container">
+        {specificRestaurant.map(eachOne => (
+          <ParticularItem
+            item={eachOne}
+            key={eachOne.id}
+            updateCart={this.updateCart}
+            updateCartTwo={this.updateCartTwo}
+            updateCartState={this.updateCartState}
+          />
+        ))}
+      </ul>
+    )
+  }
+
   getRestaurantComponent = () => {
     const {specificApiStatus} = this.state
     switch (specificApiStatus) {
@@ -179,18 +177,6 @@ class SpecificRestaurant extends Component {
         return null
     }
   }
-
-  restaurantDetailsSuccess = () => {
-    const {specificItemsDetails} = this.state
-    return <RestaurantDetails specificItemsDetails={specificItemsDetails} />
-  }
-
-  restaurantDetailsInprogress = () => (
-    <div className="home-new" testid="restaurant-details-loader">
-      <Loader type="TailSpin" height="30px" width="30px" color="#F7931E" />
-      <p className="loading-text">Loading...</p>
-    </div>
-  )
 
   restaurantDetailsFailure = () => (
     <div className="home-new">
@@ -213,6 +199,18 @@ class SpecificRestaurant extends Component {
       </button>
     </div>
   )
+
+  restaurantDetailsInprogress = () => (
+    <div className="home-new" testid="restaurant-details-loader">
+      <Loader type="TailSpin" height="30px" width="30px" color="#F7931E" />
+      <p className="loading-text">Loading...</p>
+    </div>
+  )
+
+  restaurantDetailsSuccess = () => {
+    const {specificItemsDetails} = this.state
+    return <RestaurantDetails specificItemsDetails={specificItemsDetails} />
+  }
 
   getSpecificRestaurantComponent = () => {
     const {specificRestaurantApi} = this.state

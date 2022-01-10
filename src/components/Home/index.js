@@ -1,15 +1,14 @@
 import {Component} from 'react'
+import {Redirect} from 'react-router-dom'
 import Loader from 'react-loader-spinner'
 import Cookies from 'js-cookie'
-import {Redirect} from 'react-router-dom'
 
 import Header from '../Header'
 import Carousel from '../Carousel'
 import PopularRestaurant from '../PopularRestaurant'
 import RestaurantItem from '../RestaurantItem'
-import Footer from '../Footer'
 import Counter from '../Counter'
-
+import Footer from '../Footer'
 import './index.css'
 
 const sortByOptions = [
@@ -101,12 +100,14 @@ class Home extends Component {
         eachRestaurant => ({
           name: eachRestaurant.name,
           menuType: eachRestaurant.menu_type,
+          hasOnlineDelivery: eachRestaurant.has_online_delivery,
           rating: eachRestaurant.user_rating.rating,
           ratingColor: eachRestaurant.user_rating.rating_color,
           imageUrl: eachRestaurant.image_url,
           id: eachRestaurant.id,
           reviewCount: eachRestaurant.user_rating.total_reviews,
           cuisine: eachRestaurant.cuisine,
+          opensAt: eachRestaurant.opens_at,
         }),
       )
 
@@ -119,84 +120,23 @@ class Home extends Component {
     }
   }
 
-  carouselSuccess = () => {
-    const {carouselData} = this.state
-    return (
-      <ul className="carousel-list">
-        <Carousel item={carouselData} />
-      </ul>
-    )
+  updateSortItems = sortValue => {
+    this.setState({sortedValue: sortValue}, this.getRestaurant)
   }
 
-  carouselInprogress = () => (
-    <div className="home-new" testid="restaurants-offers-loader">
-      <Loader type="TailSpin" height="30px" width="30px" color="#F7931E" />
-      <p className="loading-text">Loading...</p>
-    </div>
-  )
-
-  initiateCarousel = () => this.getCarousel()
-
-  carouselFailure = () => (
-    <div className="home-new">
-      <img
-        src="https://res.cloudinary.com/image-link-getter/image/upload/v1633514187/Layer_1_errxca.jpg"
-        alt="not found"
-        className="not-found-image"
-      />
-      <h1 className="not-found-name">Page Not Found</h1>
-      <p className="not-found-description">
-        we are sorry, the page you requested could not be found Please go back
-        to the homepage
-      </p>
-      <button
-        type="button"
-        className="retry-button"
-        onClick={this.initiateCarousel}
-      >
-        Retry
-      </button>
-    </div>
-  )
-
-  getCarouselComponent = () => {
-    const {carouselApiStatus} = this.state
-    switch (carouselApiStatus) {
-      case carouselComponent.success:
-        return this.carouselSuccess()
-      case carouselComponent.inprogress:
-        return this.carouselInprogress()
-      case carouselComponent.failure:
-        return this.carouselFailure()
-      default:
-        return null
-    }
+  decreaseItems = () => {
+    const {offSetValue} = this.state
+    this.setState({offSetValue: offSetValue - 1}, this.getRestaurant)
   }
 
-  restaurantSuccess = () => {
-    const {restaurantData, search} = this.state
-    const searchResult = restaurantData.filter(eachSearch =>
-      eachSearch.name.toLowerCase().includes(search.toLowerCase()),
-    )
-    return searchResult.length > 0 ? (
-      <>
-        <ul className="ul-restaurant-item-container">
-          {searchResult.map(eachOne => (
-            <RestaurantItem item={eachOne} key={eachOne.id} />
-          ))}
-        </ul>
-      </>
-    ) : (
-      <h1 className="no-items">No Results Found</h1>
-    )
+  increaseItems = () => {
+    const {offSetValue} = this.state
+    this.setState({offSetValue: offSetValue + 1}, this.getRestaurant)
   }
 
-  restaurantInprogress = () => (
-    <div className="home-new" testid="restaurants-list-loader">
-      <Loader type="TailSpin" height="30px" width="30px" color="#F7931E" />
-      <p className="loading-text">Loading...</p>
-    </div>
-  )
+  updateSearchResult = search => {
+    this.setState({search})
+  }
 
   initiateRestaurant = () => {
     this.getRestaurant()
@@ -224,6 +164,31 @@ class Home extends Component {
     </div>
   )
 
+  restaurantInprogress = () => (
+    <div className="home-new-loader" testid="restaurants-list-loader">
+      <Loader type="TailSpin" height="30px" width="30px" color="#F7931E" />
+      <p className="loading-text">Loading...</p>
+    </div>
+  )
+
+  restaurantSuccess = () => {
+    const {restaurantData, search} = this.state
+    const searchResult = restaurantData.filter(eachSearch =>
+      eachSearch.name.toLowerCase().includes(search.toLowerCase()),
+    )
+    return searchResult.length > 0 ? (
+      <>
+        <ul className="ul-restaurant-item-container">
+          {searchResult.map(eachOne => (
+            <RestaurantItem item={eachOne} key={eachOne.id} />
+          ))}
+        </ul>
+      </>
+    ) : (
+      <h1 className="no-items">No Results Found</h1>
+    )
+  }
+
   getRestaurantComponent = () => {
     const {restaurantApiStatus} = this.state
     switch (restaurantApiStatus) {
@@ -238,22 +203,58 @@ class Home extends Component {
     }
   }
 
-  updateSortItems = sortValue => {
-    this.setState({sortedValue: sortValue}, this.getRestaurant)
+  initiateCarousel = () => this.getCarousel()
+
+  carouselFailure = () => (
+    <div className="home-new">
+      <img
+        src="https://res.cloudinary.com/image-link-getter/image/upload/v1633514187/Layer_1_errxca.jpg"
+        alt="not found"
+        className="not-found-image"
+      />
+      <h1 className="not-found-name">Page Not Found</h1>
+      <p className="not-found-description">
+        we are sorry, the page you requested could not be found Please go back
+        to the homepage
+      </p>
+      <button
+        type="button"
+        className="retry-button"
+        onClick={this.initiateCarousel}
+      >
+        Retry
+      </button>
+    </div>
+  )
+
+  carouselInprogress = () => (
+    <div className="home-new-loader" testid="restaurants-offers-loader">
+      <Loader type="TailSpin" height="30px" width="30px" color="#F7931E" />
+      <p className="loading-text">Loading...</p>
+    </div>
+  )
+
+  carouselSuccess = () => {
+    const {carouselData} = this.state
+    return (
+      <ul className="carousel-list">
+        <Carousel item={carouselData} />
+      </ul>
+    )
   }
 
-  decreaseItems = () => {
-    const {offSetValue} = this.state
-    this.setState({offSetValue: offSetValue - 1}, this.getRestaurant)
-  }
-
-  increaseItems = () => {
-    const {offSetValue} = this.state
-    this.setState({offSetValue: offSetValue + 1}, this.getRestaurant)
-  }
-
-  updateSearchResult = search => {
-    this.setState({search})
+  getCarouselComponent = () => {
+    const {carouselApiStatus} = this.state
+    switch (carouselApiStatus) {
+      case carouselComponent.success:
+        return this.carouselSuccess()
+      case carouselComponent.inprogress:
+        return this.carouselInprogress()
+      case carouselComponent.failure:
+        return this.carouselFailure()
+      default:
+        return null
+    }
   }
 
   render() {

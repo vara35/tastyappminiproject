@@ -3,15 +3,16 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  height: 50px;
   padding-left: 80px;
   padding-right: 80px;
-  margin-top: 20px;
-  margin-bottom: 10px;
   background-color: #ffffff;
+  padding-top: 4px;
+  padding-bottom: 5px;
 }
 @media screen and (max-width: 767px) {
   .navbar {
+    display: flex;
+    flex-direction: column;
     padding-left: 25px;
     padding-right: 25px;
     margin-top: 0px;
@@ -29,6 +30,13 @@
   display: flex;
   align-items: center;
 }
+@media screen and (max-width: 767px) {
+  .image-nav-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+}
 .tasty-logo {
   height: 38.86px;
   width: 48.73px;
@@ -45,7 +53,7 @@
 }
 @media screen and (max-width: 767px) {
   .home-tasty-name {
-    font-size: 14px;
+    font-size: 16px;
   }
   .tasty-logo {
     height: 25px;
@@ -53,7 +61,7 @@
   }
 }
 .header-home {
-  font-family: DM Sans;
+  font-family: 'DM Sans';
   font-style: Bold;
   font-size: 16px;
   line-height: 26px;
@@ -69,22 +77,18 @@
 .header-ul-container {
   display: flex;
   align-items: center;
+  margin-bottom: 0;
 }
 @media screen and (max-width: 767px) {
   .header-ul-container {
     display: none;
+    width: 100%;
+  }
+  .header-home {
+    font-size: 14px;
   }
 }
-.header-ul-container-add {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-@media screen and (min-width: 768px) {
-  .header-ul-container-add {
-    display: none;
-  }
-}
+
 .header-button {
   background-color: #f7931e;
   width: 60px;
@@ -98,26 +102,36 @@
 .one {
   color: #f7931e;
 }
-.two {
-  color: #f7931e;
-}
-@media screen and (min-width: 768px) {
-  .hamBurger {
-    display: none;
-  }
-}
-.header-ul-remove {
-  display: none;
-}
-.new {
-  display: none;
+
+.header-ul-container-add {
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
 }
 .closer {
   height: 30px;
   width: 26px;
   margin-right: 10px;
 }
-.add {
+.hamBurger {
+  display: flex;
+}
+@media screen and (min-width: 767px) {
+  .closer {
+    display: none;
+  }
+  .hamBurger {
+    display: none;
+  }
+}
+.add-new-container {
   display: flex;
   align-items: center;
+}
+.header-new-list-container {
+  display: flex;
+  align-items: center;
+}
+.removeColor {
+  color: black;
 }
