@@ -19,6 +19,7 @@ class ParticularItem extends Component {
       const getQuantityFromSaveItemsOne = convertSaveItemsOne.filter(
         eachOne => eachOne.id === item.id,
       )
+
       if (getQuantityFromSaveItemsOne.length > 0) {
         this.setState({newArrayOne: getQuantityFromSaveItemsOne[0].quantity})
       }

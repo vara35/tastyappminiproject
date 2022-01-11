@@ -185,7 +185,9 @@ class Home extends Component {
         </ul>
       </>
     ) : (
-      <h1 className="no-items">No Results Found</h1>
+      <div className="no-results-item-container">
+        <h1 className="no-items">No Results Found</h1>
+      </div>
     )
   }
 

@@ -84,7 +84,6 @@ class CartItem extends Component {
     if (getSaveItems !== null) {
       convertSaveItems = JSON.parse(getSaveItems)
     }
-
     if (convertSaveItems !== undefined) {
       const getSaveItemsFromMap = convertSaveItems.map(eachFood => {
         if (eachFood.id === itemCart.id) {
@@ -95,18 +94,12 @@ class CartItem extends Component {
         }
         return eachFood
       })
-
       const getValueFromFilters = getSaveItemsFromMap.filter(
         eachFilter => eachFilter !== null,
       )
 
-      if (getValueFromFilters.length > 0) {
-        localStorage.setItem('cartData', JSON.stringify(getValueFromFilters))
-        changeState()
-      } else {
-        localStorage.removeItem('cartData')
-        changeState()
-      }
+      localStorage.setItem('cartData', JSON.stringify(getValueFromFilters))
+      changeState()
     }
     this.showQuantity()
     getCostFun()

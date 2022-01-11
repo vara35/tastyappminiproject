@@ -1,6 +1,6 @@
 .home-container {
   min-height: 100vh;
-  background-color: #f8f6f6;
+  background-color: #f5efef;
 }
 .home-items-container {
   display: flex;
@@ -70,22 +70,24 @@
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  padding-left: 80px;
-  padding-right: 80px;
+  padding-left: 50px;
+  padding-right: 50px;
+  min-height: 50vh;
+  margin-top: 0;
 }
 @media screen and (min-width: 768px) and (max-width: 991px) {
   .ul-restaurant-item-container {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 30px;
+    padding-right: 30px;
   }
 }
 @media screen and (max-width: 767px) {
   .ul-restaurant-item-container {
-    padding-left: 25px;
-    padding-right: 25px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }
 .no-items {
@@ -97,4 +99,12 @@
   .no-items {
     font-size: 15px;
   }
+}
+.no-results-item-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 30vh;
 }

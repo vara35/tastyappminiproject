@@ -36,12 +36,12 @@ class Cart extends Component {
 
   getCost = () => {
     const getValues = localStorage.getItem('cartData')
-    let convert
+    let convert = []
     if (getValues !== null) {
       convert = JSON.parse(getValues)
     }
 
-    if (convert !== undefined) {
+    if (convert.length !== 0) {
       const getTotalPrice = convert.map(
         eachItemCost => eachItemCost.quantity * eachItemCost.cost,
       )
@@ -111,12 +111,11 @@ class Cart extends Component {
   cartSuccess = () => {
     const {itemsCount, cartIdentify, count} = this.state
     const getValuesFromLocal = localStorage.getItem('cartData')
-    let converting
+    let converting = []
     if (getValuesFromLocal !== null) {
       converting = JSON.parse(getValuesFromLocal)
     }
-
-    return converting === undefined ? (
+    return converting.length <= 0 ? (
       <div className="cart-bottom-container">
         <img
           src="https://res.cloudinary.com/image-link-getter/image/upload/v1633884154/OBJECTSbowl_xqhwmy.jpg"

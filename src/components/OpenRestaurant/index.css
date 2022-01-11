@@ -2,6 +2,7 @@
   min-height: 100vh;
   background-color: #f8f6f6;
 }
+
 .openRestaurant-items-container {
   display: flex;
   flex-direction: column;
@@ -15,6 +16,7 @@
     padding-right: 0px;
     padding-top: 0px;
     width: 100%;
+    min-height: 70vh;
   }
 }
 .carousel-list {
