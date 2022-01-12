@@ -65,7 +65,7 @@
   }
 }
 .login {
-  font-family: DM Sans;
+  font-family: 'DM Sans';
   font-style: Medium;
   font-size: 32px;
   line-height: 40px;
@@ -112,7 +112,7 @@
   }
 }
 .username {
-  font-family: DM Sans;
+  font-family: 'DM Sans';
   font-style: Bold;
   font-size: 12px;
   line-height: 16px;
@@ -167,7 +167,7 @@
 .login-button {
   width: 100%;
   background-color: #f7931e;
-  font-family: DM sans;
+  font-family: 'DM sans';
   font-style: Bold;
   font-size: 14px;
   line-height: 24px;

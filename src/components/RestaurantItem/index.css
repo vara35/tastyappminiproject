@@ -1,6 +1,6 @@
 .main-restaurant-list {
   list-style-type: none;
-  height: 134px;
+  height: 138px;
   width: 32%;
   background-color: #ffffff;
   margin-right: 10px;
@@ -9,27 +9,27 @@
 }
 @media screen and (max-width: 767px) {
   .main-restaurant-list {
-    height: 100px;
+    height: 110px;
     width: 100%;
   }
 }
 @media screen and (min-width: 768px) and (max-width: 991px) {
   .main-restaurant-list {
-    width: 46%;
-    height: 121px;
+    width: 48%;
+    height: 134px;
   }
 }
 
 .list-item-restaurant {
   display: flex;
   align-items: flex-start;
-  height: 134px;
+  height: 138px;
   width: 100%;
 }
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
   .list-item-restaurant {
-    height: 121px;
+    height: 134px;
   }
 }
 
@@ -47,7 +47,7 @@
 }
 @media screen and (max-width: 767px) {
   .list-item-restaurant {
-    height: 100px;
+    height: 110px;
   }
   .foodType {
     font-size: 10px;
@@ -58,21 +58,21 @@
   }
 }
 .home-restaurant-image-container {
-  height: 134px;
+  height: 138px;
   margin-right: 10px;
 }
 @media screen and (max-width: 767px) {
   .home-restaurant-image-container {
-    height: 100px;
+    height: 110px;
   }
 }
 @media screen and (min-width: 768px) and (max-width: 991px) {
   .home-restaurant-image-container {
-    height: 121px;
+    height: 134px;
   }
 }
 .home-restaurant-image {
-  height: 134px;
+  height: 138px;
   min-width: 190px;
   max-width: 195px;
   border-radius: 8px;
@@ -89,7 +89,7 @@
 }
 @media screen and (min-width: 768px) and (max-width: 991px) {
   .home-restaurant-image {
-    height: 121px;
+    height: 134px;
     min-width: 210px;
     max-width: 220px;
     flex-grow: 1;
@@ -97,7 +97,7 @@
 }
 @media screen and (max-width: 767px) {
   .home-restaurant-image {
-    height: 100px;
+    height: 110px;
     min-width: 153px;
     max-width: 155px;
   }

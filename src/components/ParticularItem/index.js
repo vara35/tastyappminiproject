@@ -100,7 +100,7 @@ class ParticularItem extends Component {
               <BiRupee className="ratingThe" />
               <p className="particular-foodType">{item.cost}</p>
             </div>
-            <div className="star-container">
+            <div className="star-food-item-container">
               <BsStarFill className={`${addColorToRating} ratingColor`} />
               <p className="food-rating">{item.rating}</p>
             </div>

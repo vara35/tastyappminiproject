@@ -15,6 +15,8 @@
     justify-content: space-between;
     margin-left: 0;
     margin-top: 20px;
+    padding-left: 0;
+    height: 110px;
   }
 }
 .count-of-items-in-cart {
@@ -23,7 +25,7 @@
 .cart-image {
   min-width: 150px;
   max-width: 151px;
-  height: 100px;
+  height: 110px;
   border-radius: 10px;
   cursor: pointer;
 }

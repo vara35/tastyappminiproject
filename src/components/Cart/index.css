@@ -37,7 +37,7 @@
 }
 @media screen and (max-width: 767px) {
   .cart-bottom-container {
-    padding: 30px;
+    padding-bottom: 120px;
   }
   .cart-noProduct {
     font-size: 20px;

@@ -9,7 +9,7 @@
   text-align: center;
 }
 .footer-name {
-  font-family: DM Sans;
+  font-family: 'DM Sans';
   font-style: Bold Italic;
   font-size: 32px;
   color: #ffffff;
@@ -17,8 +17,8 @@
   line-height: 1.4px;
 }
 .footer-text {
-  font-family: DM Sans;
-  font-style: Regular;
+  font-family: 'DM Sans';
+  font-style: 'Regular';
   font-size: 16px;
   font-weight: 400;
   color: #ffffff;

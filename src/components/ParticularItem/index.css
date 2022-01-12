@@ -1,25 +1,25 @@
 .add-new {
-  width: 32%;
-  height: 134px;
+  width: 31%;
+  height: 138px;
   text-decoration: none;
   margin-top: 20px;
   margin-right: 16px;
   list-style-type: none;
-  background-color: #ffffff;
   border-radius: 10px;
+  background-color: #ffffff;
 }
 @media screen and (min-width: 768px) and (max-width: 991px) {
   .add-new {
     width: 46%;
     max-width: 460px;
-    height: 121px;
+    height: 134px;
   }
 }
 
 @media screen and (max-width: 767px) {
   .add-new {
     width: 100%;
-    height: 100px;
+    height: 120px;
     margin-bottom: 5px;
   }
 }
@@ -28,10 +28,14 @@
   display: flex;
   align-items: flex-start;
   width: 100%;
-  height: 134px;
+  height: 138px;
   margin-right: 10px;
 }
-
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .list-item-restaurant {
+    height: 138px;
+  }
+}
 .restaurant-name-container {
   display: flex;
   flex-direction: column;
@@ -47,7 +51,7 @@
 }
 @media screen and (max-width: 767px) {
   .list-item-restaurant {
-    height: 100px;
+    height: 120px;
     width: 100%;
   }
   .particular-foodType {
@@ -60,7 +64,7 @@
   }
 }
 .restaurant-image {
-  height: 134px;
+  height: 138px;
   min-width: 188px;
   max-width: 190px;
   flex-grow: 1;
@@ -70,15 +74,15 @@
 }
 @media screen and (min-width: 768px) and (max-width: 991px) {
   .restaurant-image {
-    height: 121px;
-    min-width: 215px;
+    height: 134px;
+    width: 215px;
     max-width: 220px;
     flex-grow: 1;
   }
 }
 @media screen and (max-width: 767px) {
   .restaurant-image {
-    height: 100px;
+    height: 120px;
     min-width: 153px;
     max-width: 155px;
   }
@@ -109,7 +113,7 @@
   color: #ffcc00;
   margin-right: 5px;
 }
-.star-container {
+.star-food-item-container {
   display: flex;
   align-items: center;
 }
